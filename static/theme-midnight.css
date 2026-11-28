@@ -1,0 +1,48 @@
+/* Slot #1088: public-site theme layer "Midnight" (owner 21 Nov 2026, the 60-30-10 reel): Midnight Blue as the main
+   surface (60 %), Stone for type, secondary surfaces and lines (30 %), Amber #FFB23F as the one accent (10 %).
+   Same token NAMES as ui/src/styles/tokens.css, scoped to body.site so the terminal keeps its own palette until the
+   owner applies an identity app-wide (W-11). Every text token >= 4.5:1 on s0 / s1 (tests/test_s1088_midnight.py
+   measures the pairs). Financial green / red keep their meaning; caution is a paler amber so it never reads as the
+   accent. WEBSITE_THEME=hybrid keeps direction C; WEBSITE_THEME=navy drops every layer. */
+body.site, body.site [data-theme="light"] {
+  /* light: stone paper, midnight type, amber accent */
+  --s0: #F1EEE8; --s1: #FFFFFF; --s2: #F7F4EE; --s3: #FFFFFF; --well: #ECE8E0;
+  --line: #D6D0C4; --line2: #E3DED4; --grid: #E3DED4;
+  --ink: #0F172A; --ink2: #27324A; --muted: #5A6276; --faint: #5F6780;
+  --accent: #FFB23F; --accent-ink: #1A1206; --accent-soft: #FFF0D2;
+  --link: #7A5110; --link-soft: #FFF0D2; --focus: #7A5110;
+  --up: #237A4C; --down: #B0463C; --warn: #8A5A10; --caution: #8A5A10; --caution-soft: #FFF0D2;
+  --glass: rgba(255,255,255,.84); --ar-teal: #0F172A; --platinum: #8F94A3; --champagne: #FFB23F; --stone: #CFC8BC; --midnight: #0B1220;
+  --scrim: rgba(15,23,42,.4);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) body.site {
+  --s0: #0B1220; --s1: #111B2E; --s2: #16233A; --s3: #1C2B45; --well: #0E1626;
+  --line: #26344D; --line2: #1F2B41; --grid: #1F2B41;
+  --ink: #ECE7DD; --ink2: #CFC8BC; --muted: #A39C90; --faint: #938C80;
+  --accent: #FFB23F; --accent-ink: #1A1206; --accent-soft: #3A2A0E;
+  --link: #FFC866; --link-soft: #3A2A0E; --focus: #FFB23F;
+  --up: #7FC79A; --down: #E0867C; --warn: #F0C060; --caution: #F0C060; --caution-soft: #3A2E12;
+  --glass: rgba(17,27,46,.86); --ar-teal: #070D19; --platinum: #D8D2C6; --champagne: #FFB23F; --stone: #CFC8BC; --midnight: #0B1220;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+} }
+html[data-theme="dark"] body.site {
+  --s0: #0B1220; --s1: #111B2E; --s2: #16233A; --s3: #1C2B45; --well: #0E1626;
+  --line: #26344D; --line2: #1F2B41; --grid: #1F2B41;
+  --ink: #ECE7DD; --ink2: #CFC8BC; --muted: #A39C90; --faint: #938C80;
+  --accent: #FFB23F; --accent-ink: #1A1206; --accent-soft: #3A2A0E;
+  --link: #FFC866; --link-soft: #3A2A0E; --focus: #FFB23F;
+  --up: #7FC79A; --down: #E0867C; --warn: #F0C060; --caution: #F0C060; --caution-soft: #3A2E12;
+  --glass: rgba(17,27,46,.86); --ar-teal: #070D19; --platinum: #D8D2C6; --champagne: #FFB23F; --stone: #CFC8BC; --midnight: #0B1220;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+/* the bands: deep midnight with amber light, in both modes */
+body.site .band { background: #070D19; color: #ECE7DD; border: 1px solid #26344D; }
+body.site .band__h { color: #F5F1E8; }
+body.site .band__p { color: #CFC8BC; }
+/* #1208: .brand__mark colours are fixed in the SVG (ledger mark); the theme overrides here are retired */
+body.site .shot__frame { background: #0B1220; }
+/* stone secondary surfaces: cards and callout wells sit on stone-tinted midnight, never on pure accent */
+body.site .card, body.site .tile { border-color: var(--line); }

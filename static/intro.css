@@ -1,0 +1,431 @@
+/* Slot #1068: the scroll-driven opening ("Enter the intelligence behind the markets"). Progressive enhancement:
+   content is complete and readable with no JavaScript and no animation; html.js + motion-ok adds reveals; CSS
+   scroll-driven animations where supported, IntersectionObserver class toggles elsewhere (site.js). Reduced motion:
+   everything static, backgrounds still. No video, no canvas, no third-party script. */
+body.site.intro, .intro { --obsidian: #060609; --graphite: #121318; --navy: #0B0B0E; --space: #15161B; --platinum: #E6E6EA; --silver: #4B6BFF; --champagne: #FF7A1A; --ivory: #F4F4F7; --stone: #C8C9D2; --electric: #4B6BFF;   /* #1090: Midnight Black 60 / Electric Blue 30 / Sunset Orange 10 */
+  background: var(--obsidian); color: var(--ivory); position: relative; overflow-x: clip; }
+.intro a { color: var(--champagne); }
+.intro :focus-visible { outline-color: var(--champagne); }
+
+/* persistent strip: skip, sign in, access. Never blocks content; 44 px targets */
+.intro__strip { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: rgba(6,6,9,.72); backdrop-filter: blur(10px) saturate(1.1); border-bottom: 1px solid rgba(213,216,222,.12); }
+.intro__brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ivory); text-decoration: none; font-weight: 600; letter-spacing: .1em; font-size: .85rem; min-height: 44px; }
+.intro__brand svg { width: 31px; height: 26px; }   /* #1211: the ledger mark keeps its own fixed colours (no theme fill/stroke) */
+.intro__acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.intro__acts a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 6px; border: 1px solid rgba(213,216,222,.22); color: var(--ivory); text-decoration: none; font-size: .9rem; font-weight: 600; }
+.intro__acts a.is-primary { background: var(--champagne); color: #161410; border-color: var(--champagne); }
+.intro__acts a:hover { border-color: var(--champagne); }
+
+/* atmosphere: three static SVG layers, parallax only with motion-ok */
+.intro__sky { position: fixed; inset: 0; height: 100vh; pointer-events: none; overflow: hidden; z-index: 0; }   /* #1085: fixed to the viewport, so a 28 000 px page no longer stretches the stars */
+.intro__sky svg { position: absolute; left: 50%; top: 0; width: max(1400px, 120vw); height: max(100%, 120vh); transform: translateX(-50%); opacity: .9; }
+.intro__sky .l1 { opacity: .55; } .intro__sky .l2 { opacity: .3; } .intro__sky .l3 { opacity: .5; }
+
+.scene { position: relative; z-index: 1; min-height: 100svh; display: grid; align-content: center; padding: clamp(72px, 12vh, 140px) 0; border-bottom: 1px solid rgba(213,216,222,.07); }
+.scene__wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+.scene__n { font-family: var(--f-mono, ui-monospace, monospace); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--champagne); margin: 0 0 14px; }
+.scene__h { font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.04; letter-spacing: -.02em; font-weight: 600; color: var(--ivory); margin: 0; max-width: 16ch; }
+.scene__p { font-family: var(--f-serif, Georgia, serif); font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.55; color: #C9C5BD; max-width: 56ch; margin: 18px 0 0; }
+.scene__note { font-size: .82rem; color: #9D9890; margin: 14px 0 0; }
+.scene--arrival { min-height: 100svh; text-align: left; }
+.scene--arrival .scene__h { max-width: 14ch; }
+.scroll-cue { margin-top: 48px; display: inline-flex; align-items: center; gap: 10px; color: #9D9890; font-size: .85rem; text-decoration: none; min-height: 44px; }
+.scroll-cue i { width: 1px; height: 36px; background: linear-gradient(180deg, var(--silver), transparent); display: inline-block; }
+
+/* scene 2: the signal graph */
+.signal { display: grid; gap: 28px; grid-template-columns: minmax(0, 1fr); align-items: center; margin-top: 28px; }
+.signal__fig { background: rgba(18,19,24,.7); border: 1px solid rgba(213,216,222,.14); border-radius: 14px; padding: 14px; }
+.signal__fig svg { width: 100%; height: auto; display: block; }
+.signal__fig .edge { stroke: rgba(213,216,222,.22); stroke-width: 1.2; }
+.signal__fig .edge--hot { stroke: var(--champagne); stroke-width: 1.8; }
+.signal__fig .node { fill: var(--graphite); stroke: var(--platinum); stroke-width: 1.3; }
+.signal__fig .node--hot { fill: var(--champagne); stroke: var(--champagne); }
+.signal__fig text { font-family: var(--f-mono, monospace); font-size: 11px; fill: #C9C5BD; }
+.signal__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.signal__list li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; padding: 12px 14px; border: 1px solid rgba(213,216,222,.12); border-radius: 10px; background: rgba(18,19,24,.55); }
+.signal__list b { color: var(--ivory); display: block; font-size: .98rem; }
+.signal__list span { color: #B7B2A9; font-size: .92rem; }
+.signal__list i { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--champagne); color: var(--champagne); font: 600 .72rem/22px var(--f-mono, monospace); text-align: center; font-style: normal; }
+
+/* scene 3: engine layers */
+.layers { counter-reset: layer; margin: 32px 0 0; padding: 0; list-style: none; display: grid; gap: 0; border-left: 1px solid rgba(255,122,26,.35); }
+.layers li { position: relative; padding: 16px 0 18px 28px; }
+.layers li::before { counter-increment: layer; content: counter(layer, decimal-leading-zero); position: absolute; left: -11px; top: 18px; width: 22px; height: 22px; border-radius: 50%; background: var(--obsidian); border: 1px solid var(--champagne); color: var(--champagne); font: 600 .6rem/20px var(--f-mono, monospace); text-align: center; }
+.layers h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--ivory); }
+.layers p { margin: 0; color: #B7B2A9; font-size: .95rem; max-width: 62ch; }
+.layers details { margin-top: 6px; } .layers summary { cursor: pointer; color: var(--champagne); font-size: .88rem; min-height: 32px; display: inline-flex; align-items: center; }
+.layers details p { margin-top: 6px; }
+
+/* scenes 4-7 compact (next slice adds real screens and figures) */
+.tiles { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 28px; }
+.tile { background: rgba(18,19,24,.6); border: 1px solid rgba(213,216,222,.12); border-radius: 12px; padding: 16px; }
+.tile h3 { margin: 0 0 6px; font-size: 1rem; color: var(--ivory); }
+.tile p { margin: 0; color: #B7B2A9; font-size: .92rem; }
+.tile .tag { display: inline-block; margin-top: 10px; font: 600 .68rem/1 var(--f-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: #9D9890; border: 1px solid rgba(213,216,222,.18); padding: 5px 7px; border-radius: 4px; }
+.tile .tag--built { color: var(--champagne); border-color: rgba(255,122,26,.5); }
+.screens { margin-top: 28px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.screen { aspect-ratio: 16 / 10; border-radius: 12px; border: 1px solid rgba(213,216,222,.14); background: linear-gradient(160deg, rgba(31,35,40,.9), rgba(6,6,9,.9)); display: grid; place-items: center; color: #9D9890; font-size: .85rem; text-align: center; padding: 16px; }
+
+/* scene 8 */
+.scene--enter { text-align: center; min-height: 100svh; }
+.scene--enter .scene__h, .scene--enter .scene__p { margin-inline: auto; }
+.scene--enter .mark { display: block; width: 86px; height: 72px; margin: 0 auto 22px; }   /* #1211: the ledger mark, fixed colours */
+.enter__acts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+.enter__acts a { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border-radius: 8px; font-size: 1.05rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(213,216,222,.25); color: var(--ivory); }
+.enter__acts a.is-primary { background: var(--champagne); color: #161410; border-color: var(--champagne); }
+.enter__small { margin-top: 18px; color: #9D9890; font-size: .9rem; }
+
+.intro__foot { position: relative; z-index: 1; text-align: center; padding: 18px 16px 28px; color: #9D9890; font-size: .85rem; border-top: 1px solid rgba(213,216,222,.07); } .intro__foot p { margin: 0; } .intro__foot a { color: #C9C5BD; }
+
+/* progress dots (desktop) */
+.intro__dots { position: fixed; right: 14px; top: 50%; transform: translateY(-50%); z-index: 15; display: none; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.intro__dots a { display: block; width: 24px; height: 24px; border-radius: 50%; position: relative; }
+.intro__dots a::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: rgba(213,216,222,.35); }
+.intro__dots a[aria-current="true"]::after { background: var(--champagne); }
+@media (min-width: 1000px) { .intro__dots { display: flex; } .signal { grid-template-columns: 7fr 5fr; } }
+
+/* ---- motion: only with JS and no reduced-motion preference ---- */
+html.js.motion-ok .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+html.js.motion-ok .reveal.is-in { opacity: 1; transform: none; }
+html.js.motion-ok .scene--arrival .reveal { opacity: 1; transform: none; transition: none; animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+html.js.motion-ok .scene--arrival .reveal[data-delay="1"] { animation-delay: .12s; } html.js.motion-ok .scene--arrival .reveal[data-delay="2"] { animation-delay: .24s; } html.js.motion-ok .scene--arrival .reveal[data-delay="3"] { animation-delay: .36s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+html.js.motion-ok .reveal[data-delay="1"] { transition-delay: .12s; } html.js.motion-ok .reveal[data-delay="2"] { transition-delay: .24s; } html.js.motion-ok .reveal[data-delay="3"] { transition-delay: .36s; }
+html.js.motion-ok .signal__fig .edge--hot { stroke-dasharray: 400; stroke-dashoffset: 400; transition: stroke-dashoffset 1.6s ease .2s; }
+html.js.motion-ok .signal__fig.is-in .edge--hot { stroke-dashoffset: 0; }
+html.js.motion-ok .layers li { opacity: 0; transform: translateX(-10px); transition: opacity .6s ease, transform .6s ease; }
+html.js.motion-ok .layers.is-in li { opacity: 1; transform: none; }
+html.js.motion-ok .layers.is-in li:nth-child(2) { transition-delay: .15s; } html.js.motion-ok .layers.is-in li:nth-child(3) { transition-delay: .3s; } html.js.motion-ok .layers.is-in li:nth-child(4) { transition-delay: .45s; } html.js.motion-ok .layers.is-in li:nth-child(5) { transition-delay: .6s; } html.js.motion-ok .layers.is-in li:nth-child(6) { transition-delay: .75s; }
+@supports (animation-timeline: scroll()) {   /* #1177: the fallback - fly.js drives the same drift as a plain transform (html.sky-js), ~50 fps vs ~22 on a software-composited desktop */
+  html.motion-ok:not(.sky-js) .intro__sky .l1 { animation: drift1 linear both; animation-timeline: scroll(root); }
+  html.motion-ok:not(.sky-js) .intro__sky .l2 { animation: drift2 linear both; animation-timeline: scroll(root); }
+  html.motion-ok:not(.sky-js) .intro__sky .l3 { animation: drift3 linear both; animation-timeline: scroll(root); }
+  @keyframes drift1 { to { transform: translate(-50%, -6%); } }
+  @keyframes drift2 { to { transform: translate(-52%, -12%); } }
+  @keyframes drift3 { to { transform: translate(-48%, -20%); } }
+}
+@media (prefers-reduced-motion: reduce) { .intro * { transition: none !important; animation: none !important; } .intro .reveal { opacity: 1 !important; transform: none !important; } }
+.l-short { display: none; }
+@media (max-width: 600px) { .intro__acts a { padding: 0 12px; font-size: .88rem; } .intro__strip { padding: 8px 12px; } .scene { padding: 64px 0; } .l-long { display: none; } .l-short { display: inline; } .intro__acts { flex-wrap: nowrap; } }
+
+/* ---- #1071: real screens, proofs, deck and strategy panes; appear and vanish with the scroll ---- */
+.stage, .proofs, .duo, .stack { margin-top: 32px; display: grid; gap: 22px; }
+.duo { grid-template-columns: minmax(0, 1fr); align-items: start; }
+.proofs { grid-template-columns: minmax(0, 1fr); }
+.shot { margin: 0; position: relative; }
+.shot__frame { border-radius: 14px; border: 1px solid rgba(213,216,222,.16); background: #0F1114; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.04) inset; overflow: hidden; }
+.shot__frame img { display: block; width: 100%; height: auto; }
+.shot--missing .shot__frame { aspect-ratio: 16 / 10; display: grid; place-items: center; color: #9D9890; font-size: .85rem; }
+.shot figcaption { display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; align-items: baseline; padding: 12px 4px 0; color: #C9C5BD; font-size: .92rem; }
+.shot figcaption b { color: var(--ivory); } .shot figcaption span { grid-column: 1 / -1; color: #B7B2A9; font-size: .88rem; }
+.shot figcaption small { color: #9D9890; font: 600 .68rem/1.4 var(--f-mono, monospace); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.phones { display: grid; gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.phones__p { grid-column: 1 / -1; color: #B7B2A9; font-size: .95rem; max-width: 60ch; margin: 0; }
+.shot--phone .shot__frame { border-radius: 26px; border-width: 2px; max-width: 300px; margin-inline: auto; }
+.proofs__text { display: grid; gap: 12px; align-content: start; }
+.explain { padding: 14px 16px; border-left: 2px solid var(--champagne); background: rgba(18,19,24,.5); }
+.explain h3 { margin: 0 0 4px; font-size: 1rem; color: var(--ivory); } .explain p { margin: 0; color: #B7B2A9; font-size: .93rem; }
+.tiles--col { grid-template-columns: minmax(0, 1fr); margin-top: 0; }
+@media (min-width: 900px) {
+  .duo { grid-template-columns: 7fr 5fr; } .duo--rev { grid-template-columns: 5fr 7fr; }
+  .proofs { grid-template-columns: 6fr 6fr; } .proofs .shot:last-child { grid-column: 1 / -1; max-width: 900px; }
+  .phones { grid-template-columns: 1fr 1fr 1.4fr; align-items: center; } .phones__p { grid-column: auto; }
+  .stage .shot--wide:nth-child(2) { margin-left: 8%; } .stage .shot--wide:nth-child(3) { margin-right: 8%; }
+}
+/* scroll-driven depth where the browser has it: each frame rises and settles as it enters, recedes as it leaves */
+@supports (animation-timeline: view()) {
+  html.motion-ok .shot--wide .shot__frame { animation: settle linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; transform-origin: 50% 100%; }
+  html.motion-ok .shot--wide { animation: recede linear both; animation-timeline: view(); animation-range: exit 30% exit 100%; }
+  @keyframes settle { from { transform: perspective(1400px) rotateX(8deg) scale(.94); opacity: .35; } to { transform: none; opacity: 1; } }
+  @keyframes recede { to { opacity: .15; transform: translateY(-24px) scale(.97); } }
+}
+/* panes vanish again when they leave the viewport (site.js toggles is-in both ways) */
+html.js.motion-ok .reveal:not(.is-in) { transition-delay: 0s; }
+
+/* ---- #1074: ring in the arrival, the champagne trail through the middle scenes ---- */
+.arrival { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); align-items: center; }
+@media (min-width: 900px) { .arrival { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); } .arrival .ring { max-width: none; } }
+.intro .ring__cap { color: #9D9890; }
+.intro__trail { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.intro__trail path { fill: none; stroke: var(--champagne); stroke-width: 1.2; opacity: .55; stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+@supports (animation-timeline: scroll()) {
+  html.motion-ok .intro__trail path { animation: trail linear both; animation-timeline: scroll(root); animation-range: 8% 92%; }
+  @keyframes trail { to { stroke-dashoffset: 0; } }
+}
+html:not(.motion-ok) .intro__trail path { stroke-dashoffset: 0; opacity: .25; }
+
+/* #1083: the ledger bars inside scene 5 */
+.ledger { margin-top: 28px; max-width: 900px; } .ledger .scene__n { margin-bottom: 8px; }
+.ledger .wchart__bar { fill: var(--champagne); } .ledger .wchart__grid { stroke: rgba(213,216,222,.18); } .ledger .wchart__y, .ledger .wchart__x { fill: #9D9890; } .ledger .wchart__v { fill: #C9C5BD; } .ledger .wchart figcaption, .ledger .note { color: #B7B2A9; }
+
+/* ---- #1084: the living constellation stage (slice A/B of the cinematic scroll V2) ---- */
+.scene--arrival.scene { min-height: 100svh; padding: 0; display: block; align-content: start; text-align: center; }   /* the stage sticks at the scene's top, never centred inside it */
+html.js.motion-ok .scene--arrival { min-height: 175svh; }                         /* room for the contraction and fade */
+.arrival__stage { position: sticky; top: 0; height: 100svh; min-height: 560px; display: grid; align-content: center; overflow: hidden; }
+.constellation { position: absolute; inset: 0; z-index: 0; pointer-events: auto; }
+.constellation__canvas, .constellation__still { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.constellation__canvas { width: 100%; height: 100%; display: block; }
+.constellation__still { width: min(92vmin, 980px); height: min(92vmin, 980px); opacity: .9; }
+.constellation__still[hidden] { display: none; }
+.arrival__copy { position: relative; z-index: 1; padding: 20px 0; }
+.arrival__copy::before { content: ""; position: absolute; inset: -12% -8%; z-index: -1; background: radial-gradient(ellipse at center, rgba(6,6,9,.78) 0%, rgba(6,6,9,.55) 45%, rgba(6,6,9,0) 72%); }
+.scene--arrival .scene__h { max-width: 19ch; margin-inline: auto; font-size: clamp(2.2rem, 5.6vw, 4.8rem); text-shadow: 0 2px 30px rgba(6,6,9,.8); }
+.scene--arrival .scene__p { margin-inline: auto; max-width: 48ch; color: #D1D5DD; }
+.scene--arrival .scene__note { color: #A9B4C6; }
+.scene--arrival .scroll-cue { margin-top: 36px; }
+@media (max-width: 600px) { .arrival__stage { min-height: 520px; } .scene--arrival .scene__h { font-size: clamp(2rem, 9vw, 3rem); } }
+
+/* ---- #1085: chapters with flying screens (fly.js). Static column without motion; sticky stage with html.fly-on ---- */
+.chapter.scene { padding: 0; border-bottom: 0; display: block; align-content: start; }   /* the stage sticks at the chapter's top, never centred inside it */
+.chapter__stage { width: min(1180px, 100% - 32px); margin-inline: auto; display: grid; gap: 28px; grid-template-columns: minmax(0, 1fr); align-items: center; padding: 72px 0; }
+.chapter__copy .scene__h { font-size: clamp(1.8rem, 4.2vw, 3.4rem); }
+.chapter__panels { position: relative; display: grid; gap: 18px; }
+.callout { border-left: 2px solid var(--silver); padding: 10px 14px; margin-top: 14px; background: rgba(18,19,24,.5); }
+.callout h3 { margin: 0 0 4px; font-size: 1rem; color: var(--ivory); } .callout p { margin: 0; color: #B7B2A9; font-size: .93rem; }
+.callout.ledger { border-left-color: var(--champagne); } .callout.ledger .scene__n { margin-bottom: 6px; }
+.explains { display: grid; gap: 10px; margin-top: 16px; }
+.shot--fly .shot__frame { border-radius: 14px; box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.05) inset; }
+.shot--fly.shot--phone .shot__frame { max-width: 300px; margin-inline: auto; }
+.shot--fly figcaption { justify-content: center; }
+@media (min-width: 900px) { .chapter__stage { grid-template-columns: 5fr 7fr; } }
+.chapter[data-n="1"] { --n: 1; } .chapter[data-n="2"] { --n: 2; } .chapter[data-n="3"] { --n: 3; } .chapter[data-n="4"] { --n: 4; }   /* CSP: no style attributes */
+html.fly-on .chapter { min-height: calc(100svh * (1 + 0.85 * var(--n, 1))); }
+/* #1117: every section below the arrival is rendered only when it comes near the viewport (content-visibility: auto); the
+   first layout of the page is the arrival's alone. A chapter's box is its min-height; the stage inside is exactly 100svh. The
+   other sections keep an estimate until first rendered (auto: the browser remembers the real size after that). */
+.chapter, .scene--universe, .scene--engine, .scene--enter, .foot--dark { content-visibility: auto; }
+.chapter { contain-intrinsic-size: auto 100svh; }
+.scene--universe { contain-intrinsic-size: auto 160svh; } .scene--engine { contain-intrinsic-size: auto 260svh; }
+.scene--enter { contain-intrinsic-size: auto 150svh; } .foot--dark { contain-intrinsic-size: auto 160svh; }
+html.fly-on .chapter__stage { position: sticky; top: 0; height: 100svh; padding: 0; overflow: hidden; }
+html.fly-on .chapter__copy { max-height: 100svh; overflow: hidden; padding: 64px 0 24px; }
+html.fly-on .chapter__panels { height: min(74svh, 780px); display: block; perspective: 1600px; }
+html.fly-on .fly { position: absolute; inset: 0; display: grid; align-content: center; transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) rotateY(var(--rot, 0deg)) scale(var(--sc, .96)); opacity: var(--op, 0); will-change: transform, opacity; pointer-events: none; }
+html.fly-on .fly[data-state="settled"] { pointer-events: auto; }
+html.fly-on .callout { opacity: var(--op, 0); transform: translateY(var(--ty, 0px)); }
+html.fly-on .callout[data-state="before"], html.fly-on .callout[data-state="after"] { position: absolute; visibility: hidden; }
+html.fly-on .chapter__copy { position: relative; }
+html.fly-on .chapter .reveal { opacity: 1; transform: none; transition: none; animation: none; }   /* inside a sticky stage the fly windows do the revealing */
+@media (max-width: 899px) {
+  html.fly-on .chapter__stage { grid-template-rows: auto 1fr; align-content: start; padding-top: 64px; gap: 10px; }
+  html.fly-on .chapter__copy { padding: 0; max-height: 46svh; }
+  html.fly-on .chapter__copy .scene__p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  html.fly-on .chapter__panels { height: 44svh; }
+  html.fly-on .explains { display: none; }
+}
+/* the universe map */
+.universe { margin: 28px 0 0; background: rgba(18,19,24,.55); border: 1px solid rgba(213,216,222,.12); border-radius: 14px; padding: 14px; }
+.universe svg { width: 100%; height: auto; display: block; }
+.universe__grid line { stroke: rgba(75,107,255,.12); stroke-width: .6; }
+.universe__arcs path { fill: none; stroke: var(--silver); stroke-opacity: .45; stroke-width: 1; stroke-dasharray: 3 4; }
+.universe__pts circle { fill: var(--platinum); } .universe__pts circle.is-hot { fill: var(--champagne); }
+.universe__pts text { font-family: var(--f-mono, monospace); font-size: 9.5px; fill: #B7B2A9; }
+.scene--engine .layers { margin-top: 40px; }
+
+/* ---- #1086 (V2.1): zoom-ins and the converging terminal ---- */
+.chapter[data-n="5"] { --n: 5; }
+html.fly-on .fly[data-zoom] .shot__frame img { transform: scale(var(--zs, 1)); transform-origin: var(--zx, 50%) var(--zy, 50%); transition: none; will-change: transform; }
+.zoomnote { display: none; }
+html.fly-on .zoomnote { display: inline-block; position: absolute; left: 50%; top: 6%; transform: translateX(-50%); z-index: 2; padding: 6px 12px; border-radius: 999px; background: rgba(6,6,9,.82); border: 1px solid rgba(75,107,255,.35); color: var(--ivory); font: 500 .8rem/1.2 var(--f-sans, system-ui, sans-serif); white-space: nowrap; opacity: var(--zn, 0); pointer-events: none; }
+html.fly-on .fly { position: absolute; }
+html.fly-on .chapter--converge .chapter__panels { height: min(78svh, 820px); }
+html.fly-on .chapter--converge .fly .shot figcaption { opacity: 0; }                     /* five captions would collide; the callouts name them */
+html.fly-on .chapter--converge .fly[data-state="settled"]:first-child .shot figcaption { opacity: 1; }
+.chapter--converge .chapter__panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }   /* static column: two up */
+.chapter--converge .chapter__panels .fly:first-child { grid-column: 1 / -1; }
+.tiles--chapter { margin-top: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.tiles--chapter .tile { padding: 10px 12px; } .tiles--chapter .tile h3 { font-size: .9rem; } .tiles--chapter .tile p { font-size: .8rem; }
+html.fly-on .chapter__copy .tiles--chapter { display: none; }                                /* the stage has the screens; the tiles serve the static column */
+@media (max-width: 899px) { html.fly-on .chapter--converge .chapter__panels { height: 48svh; } }
+
+/* ---- #1088: the aurora - two slow lights behind every chapter (amber and deep blue), GPU transforms only ---- */
+.intro__aurora { position: absolute; inset: -30% -20%; pointer-events: none;
+  background: radial-gradient(ellipse 34% 26% at 28% 22%, rgba(255,122,26,.13), rgba(255,122,26,0) 70%),
+              radial-gradient(ellipse 46% 36% at 74% 72%, rgba(75,107,255,.16), rgba(75,107,255,0) 70%),
+              radial-gradient(ellipse 28% 22% at 60% 30%, rgba(230,230,234,.04), rgba(230,230,234,0) 70%); }
+@media (prefers-reduced-motion: no-preference) {
+  html.motion-ok .intro__aurora { animation: aurora 48s ease-in-out infinite alternate; will-change: transform; }
+  @keyframes aurora { from { transform: translate3d(-3%, -2%, 0) scale(1); } 50% { transform: translate3d(2%, 3%, 0) scale(1.06); } to { transform: translate3d(4%, -3%, 0) scale(1.02); } }
+}
+
+/* ---- #1100 WEB-EXPERIENCE-3 (owner 22 Nov): pacing, best-fit screens, blended figures, the detailed map and graph ---- */
+/* pacing: a taller chapter per panel, so every screen holds longer under the reader's eye (fly.js eases the input) */
+html.fly-on .chapter { min-height: calc(100svh * (1.15 + 1.05 * var(--n, 1))); }
+/* the chapter rail: how far through the chapter the reader is (fly.js sets --p on it) */
+.chapter__rail { display: none; }
+html.fly-on .chapter__rail { display: block; position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); width: min(420px, 60vw); height: 2px; border-radius: 2px; background: rgba(213,216,222,.14); overflow: hidden; }
+html.fly-on .chapter__rail i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--silver), var(--champagne)); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+/* screens: best fit inside the stage, never cropped by it, never larger than it (owner: "resized according to best fit") */
+html.fly-on .fly .shot { width: 100%; display: grid; justify-items: center; }
+html.fly-on .fly .shot__frame { width: min(100%, calc((min(74svh, 780px) - 96px) * 1.6)); aspect-ratio: 16 / 10; }
+html.fly-on .fly .shot__frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+html.fly-on .fly .shot--phone .shot__frame { width: min(300px, calc((min(74svh, 780px) - 96px) * 390 / 844)); aspect-ratio: 390 / 844; max-width: none; }
+html.fly-on .fly .shot figcaption { width: min(100%, 60ch); }
+@media (max-width: 899px) {
+  html.fly-on .fly .shot__frame { width: min(100%, calc((44svh - 70px) * 1.6)); }
+  html.fly-on .fly .shot--phone .shot__frame { width: min(220px, calc((44svh - 70px) * 390 / 844)); }
+  html.fly-on .fly .shot figcaption { display: none; }
+}
+/* the figures sit on the sky, not in boxes */
+.universe, .signal__fig { background: none; border: 0; padding: 0; }
+/* #1101: no filter on the big SVGs (a drop-shadow re-rasterises the whole outline on every repaint) */
+/* the map: graticule labels, tropics, the venues' clocks, pulses along the arcs, the ringed home, the IST timeline */
+.universe__land { fill: rgba(230,230,234,.075); stroke: rgba(230,230,234,.26); stroke-width: .5; stroke-linejoin: round; }   /* Natural Earth 1:110m, public domain */
+.universe__glyph { fill: none; stroke: var(--platinum); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.universe__glyph.is-hot { stroke: var(--champagne); opacity: 1; }
+.universe__legend text { font: 500 8.5px var(--f-mono, monospace); fill: #9B9DAA; letter-spacing: .04em; }
+.universe__tropics line { stroke: rgba(230,230,234,.16); stroke-width: .6; stroke-dasharray: 2 5; }
+.universe__mer text, .universe__clocks text { font: 500 8.5px var(--f-mono, monospace); fill: #8C8E9B; letter-spacing: .06em; }
+.universe__clocks line { stroke: rgba(255,122,26,.2); stroke-width: .7; }
+.universe__pulses circle { fill: var(--champagne); }
+html:not(.motion-ok) .universe__pulses, html:not(.motion-ok) .pulses, .universe:not(.is-in) .universe__pulses, .signal__fig:not(.is-in) .pulses { display: none; }   /* #1101: pulses only while the figure is on screen */
+.universe__home .universe__ring { fill: none; stroke: var(--champagne); stroke-opacity: .55; stroke-width: .9; }
+html.motion-ok .universe.is-in .universe__home .universe__ring { transform-box: fill-box; transform-origin: center; animation: uring 3.6s ease-out infinite; }   /* #1101: only while on screen */
+html.motion-ok .universe__home .universe__ring--2 { animation-delay: 1.8s; }
+@keyframes uring { from { transform: scale(.35); opacity: 1; } to { transform: scale(1.9); opacity: 0; } }
+.universe__pts .is-halo { fill: none; stroke: var(--champagne); stroke-opacity: .35; stroke-width: 1; }
+.universe__clock { margin-top: 12px; }
+.universe__clock .universe__tick { stroke: rgba(213,216,222,.12); stroke-width: .8; }
+.universe__tickl, .universe__ist { font: 500 8.5px var(--f-mono, monospace); fill: #9B9DAA; letter-spacing: .06em; }
+.universe__row { font: 500 9px var(--f-sans, sans-serif); fill: #C8C9D2; }
+.universe__note { font: 500 8px var(--f-mono, monospace); fill: #8C8E9B; }
+.universe__bar { fill: var(--silver); opacity: .78; }
+.universe__bar--window { fill: var(--platinum); opacity: .32; }
+.universe__bar--release { fill: var(--champagne); opacity: 1; }
+.universe__bar--feed { fill: var(--platinum); opacity: .13; }
+/* the graph: lanes, what each node stores, pulses, legend (parts.html graph_svg, no prefix) */
+.signal__fig .lanes rect { fill: rgba(230,230,234,.035); stroke: rgba(213,216,222,.1); }
+.signal__fig .lanes text { font: 600 9.5px var(--f-mono, monospace); letter-spacing: .14em; text-transform: uppercase; fill: #8C8E9B; }
+.signal__fig .label { font: 600 11.5px var(--f-sans, sans-serif); fill: var(--ivory); }
+.signal__fig .sub { font: 500 9px var(--f-sans, sans-serif); fill: #9B9DAA; }
+.signal__fig .legend text { font: 500 9.5px var(--f-mono, monospace); fill: #9B9DAA; }
+.signal__fig .pulses circle { fill: var(--champagne); }
+.signal__fig .icon { fill: none; stroke: var(--platinum); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.signal__fig .icon--hot { stroke: #161410; stroke-width: 1.6; }
+
+/* ---- #1100 (owner 22 Nov): the strip without a background; the website's tabs under the actions; the merged landing ---- */
+.intro__strip { display: block; padding: 10px 16px 8px; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 0; }
+.intro__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.intro__brand span, .intro__acts a, .intro__tabs a { text-shadow: 0 1px 12px rgba(6,6,9,.9), 0 0 2px rgba(6,6,9,.9); }
+.intro__acts a { background: rgba(6,6,9,.35); }
+.intro__acts a.is-primary { background: var(--champagne); }
+.intro__tabs { display: flex; justify-content: flex-end; margin-top: 6px; }
+.intro__tabs ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 2px 4px; }
+.intro__tabs a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 9px; border-radius: 6px; color: #C8C9D2; text-decoration: none; font: 500 .76rem/1 var(--f-mono, monospace); letter-spacing: .1em; text-transform: uppercase; }
+.intro__tabs a:hover { color: var(--ivory); background: rgba(75,107,255,.16); }
+/* #1154 (s35, owner 24 Nov): on a phone the tabs WRAP into two rows - no sideways scroll, no fade, nothing off-screen; each tab
+   keeps a 36 px target. The strip grows by one row; #1118's measured --strip-h keeps the chapters clear of it. */
+@media (max-width: 600px) { .intro__tabs { justify-content: flex-start; margin-top: 4px; } .intro__tabs ul { flex-wrap: wrap; overflow: visible; justify-content: flex-start; gap: 2px 2px; } .intro__tabs a { min-height: 36px; padding: 0 8px; font-size: .66rem; letter-spacing: .08em; } }
+.scene--site { display: block; padding-top: clamp(56px, 9vh, 110px); border-bottom: 0; }
+.scene--site .scene__wrap { margin-bottom: 28px; }
+.scene--site .hero__facts { border-top-color: rgba(213,216,222,.14); }
+.scene--site .hero__facts dt { color: var(--link, #7F97FF); } .scene--site .hero__facts dd { color: var(--ivory); }
+.site__sections .sec { border-bottom-color: rgba(213,216,222,.08); }
+
+/* ---- #1118 (owner 23 Nov, phone view): the strip frosts once scrolled; chapters clear it; nothing in a chapter is clipped ---- */
+.intro__strip { transition: background-color .25s ease, border-color .25s ease; }
+.intro__strip.is-scrolled { background: rgba(6,6,9,.74); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15); border-bottom: 1px solid rgba(213,216,222,.09); }
+@media (max-width: 899px) {
+  .intro__strip { padding: 6px 12px 4px; } .intro__tabs { margin-top: 2px; }
+/* #1154: the sideways fade of #1118 is retired with the scroll - the row wraps instead: .intro__tabs ul { mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }   /* the row scrolls sideways: a fade says so * / */
+  /* the stage: copy at its natural height under the strip, the panels take what is left (site.js measures --strip-h, fly.js --ph) */
+  html.fly-on .chapter__stage { grid-template-rows: auto minmax(0, 1fr); padding-top: calc(var(--strip-h, 96px) + 6px); gap: 12px; }
+  html.fly-on .chapter__copy { max-height: none; overflow: visible; position: static; padding: 0; }
+  html.fly-on .chapter__copy .scene__n { font-size: .7rem; margin-bottom: 6px; }
+  html.fly-on .chapter__copy .scene__h { font-size: clamp(1.45rem, 6.4vw, 1.9rem); line-height: 1.08; }
+  html.fly-on .chapter__copy .scene__p { display: block; -webkit-line-clamp: none; overflow: visible; font-size: .98rem; line-height: 1.42; margin-top: 10px; }
+  html.fly-on .chapter__copy .scene__note { font-size: .82rem; line-height: 1.4; margin-top: 8px; }
+  html.fly-on .chapter__panels, html.fly-on .chapter--converge .chapter__panels { height: auto; min-height: 0; align-self: stretch; }
+  /* the notes (and the ledger) leave the copy: a frosted caption strip at the stage's foot, one at a time as fly.js fades them */
+  html.fly-on .callout { position: absolute; left: 12px; right: 12px; bottom: 30px; margin: 0; z-index: 3; padding: 8px 12px; border-radius: 8px; background: rgba(6,6,9,.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  html.fly-on .callout h3 { font-size: .92rem; } html.fly-on .callout p { font-size: .84rem; line-height: 1.35; }
+  html.fly-on .fly { align-content: start; }                                                  /* the screen sits right under the copy; the caption strip has the band below it */
+  html.fly-on .callout.ledger .wchart svg, html.fly-on .callout.ledger svg { width: auto; max-width: 100%; height: min(18svh, 150px); display: block; }
+  html.fly-on .callout.ledger figcaption { font-size: .78rem; line-height: 1.35; } html.fly-on .callout.ledger .scene__n { font-size: .68rem; margin-bottom: 4px; }
+  /* frames: never larger than the room under the copy (the 44svh rules above are the fallback before fly.js has measured) */
+  html.fly-on .fly .shot__frame { width: min(100%, calc((var(--ph, 44svh) - 12px) * 1.6)); }
+  html.fly-on .fly .shot--phone .shot__frame { width: min(220px, calc((var(--ph, 44svh) - 12px) * 390 / 844)); }
+  /* #1173: where the browser has size containers the room is the panels' own height (a grid row, never its content), so
+     fly.js measures nothing - reading it laid out every off-screen chapter (content-visibility, #1117) on the first frame */
+  @supports (container-type: size) {
+    html.fly-on .chapter__panels, html.fly-on .chapter--converge .chapter__panels { container-type: size; }
+    html.fly-on .fly .shot__frame { width: min(100%, calc((100cqh - 12px) * 1.6)); }
+    html.fly-on .fly .shot--phone .shot__frame { width: min(220px, calc((100cqh - 12px) * 390 / 844)); }
+  }
+}
+
+/* #1170: the dated what's-new lines under the opening scroll cue; small, muted, never wider than the copy */
+.whats-new { list-style: none; margin: 28px auto 0; padding: 0; max-width: 46rem; font-size: .8rem; line-height: 1.5; color: #9D9890; text-align: left; }
+.whats-new li { margin: 0 0 6px; padding-left: 5.4em; text-indent: -5.4em; }
+.whats-new time { display: inline-block; width: 5.4em; text-indent: 0; color: var(--silver); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.whats-new__more { padding-left: 5.4em; text-indent: 0; }
+.whats-new__more a { color: var(--silver); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) { .whats-new { font-size: .74rem; margin-top: 20px; } .whats-new li { padding-left: 0; text-indent: 0; } .whats-new time { display: block; width: auto; } }
+
+/* #1171: the "more of the engine" scene - five chapters as tabs; without JS every panel stays, stacked */
+.scene--more .scene__wrap { max-width: 64rem; }
+.more { margin-top: 28px; text-align: left; }
+.more__tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.more__tab { appearance: none; border: 1px solid rgba(230,230,234,.22); background: rgba(230,230,234,.04); color: var(--silver); border-radius: 999px; padding: 8px 14px; font: 500 .8rem/1.2 inherit; letter-spacing: .04em; cursor: pointer; min-height: 36px; }
+.more__tab[aria-selected="true"] { background: var(--silver); color: #0B0B0E; border-color: var(--silver); }
+.more__tab:focus-visible { outline: 2px solid var(--silver); outline-offset: 2px; }
+.more__panel { border-left: 1px solid rgba(230,230,234,.18); padding: 2px 0 2px 18px; margin: 0 0 18px; }
+html.js .more__panel[data-hidden] { display: none; }
+.more__h { font-size: 1.25rem; margin: 0 0 8px; color: #E6E6EA; }
+.more__p { color: #B8B4AC; font-size: .98rem; margin: 0 0 12px; max-width: 58ch; }
+.more__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.more__list li { color: #9D9890; font-size: .88rem; line-height: 1.5; } .more__list strong { color: #E6E6EA; font-weight: 500; display: block; }
+.more__list--explain { margin-top: 10px; }
+@media (max-width: 600px) { .more__tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; } .more__tab { flex: 0 0 auto; } }
+.more__shots { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 0 0 12px; }
+.more__shots .shot { margin: 0; }
+
+
+/* ---- #1211 (owner 27 Nov: "thick bar"): one slim row from 1180 px - brand left, the nine tabs in the middle, Sign in and
+   Request access right. The markup is unchanged (.intro__row becomes display: contents, so brand and actions sit in the strip's
+   grid beside the tabs). Narrower screens keep the wrapped second row of #1154. The selected scene tab reads as accent fill
+   with dark ink. ---- */
+@media (min-width: 1180px) {
+  .intro__strip { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 18px; padding: 6px 18px; }
+  .intro__row { display: contents; }
+  .intro__brand { grid-column: 1; grid-row: 1; min-height: 40px; }
+  .intro__tabs { grid-column: 2; grid-row: 1; margin-top: 0; justify-content: center; }
+  .intro__tabs ul { flex-wrap: nowrap; justify-content: center; gap: 0 2px; }
+  .intro__tabs a { min-height: 34px; padding: 0 8px; font-size: .7rem; letter-spacing: .08em; white-space: nowrap; }
+  .intro__acts { grid-column: 3; grid-row: 1; flex-wrap: nowrap; }
+  .intro__acts a { min-height: 36px; padding: 0 12px; font-size: .84rem; }
+}
+.more__tab[aria-selected="true"] { background: var(--champagne, #FF7A1A); color: #161410; border-color: var(--champagne, #FF7A1A); font-weight: 600; }
+
+/* ---- #1215 (owner 27 Nov: "truncated content seen on scroll in intro - recheck fits of the entire scroll page") ----
+   Laptop/desktop pinned stage: (1) callouts share one grid cell, so a crossfade never stacks two and the block keeps one height;
+   (2) the chapter's explanations follow the stage in the page (.chapter__after) instead of being cut off inside it;
+   (3) the heading and paragraph also scale with the viewport HEIGHT, so a 650 px laptop window fits the copy;
+   (4) a panel caption shows only while its panel is settled - two captions never overlap mid-transition. */
+.callouts { display: grid; }
+.callouts > .callout { grid-area: 1 / 1; }
+.chapter__after { width: min(1180px, 100% - 32px); margin: 0 auto; padding: 8px 0 56px; position: relative; z-index: 1; }
+.chapter__after .explains { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 0; }
+html.fly-on .chapter__after .explains { display: grid; }
+html.fly-on .chapter__after .reveal { opacity: 1; transform: none; }
+html.fly-on .fly:not([data-state="settled"]) .shot figcaption { opacity: 0; transition: opacity .2s ease; }
+@media (min-width: 900px) {
+  html.fly-on .callouts > .callout[data-state="before"], html.fly-on .callouts > .callout[data-state="after"] { position: static; visibility: hidden; }
+  html.fly-on .chapter__copy { padding: calc(var(--strip-h, 56px) + 12px) 0 34px; display: flex; flex-direction: column; justify-content: center; height: 100svh; box-sizing: border-box; }
+  html.fly-on .chapter__copy .scene__h { font-size: clamp(1.6rem, min(4.2vw, 6.4svh), 3.4rem); }
+  html.fly-on .chapter__copy .scene__p { font-size: clamp(.95rem, min(1.6vw, 2.5svh), 1.3rem); line-height: 1.5; margin-top: min(18px, 2svh); }
+  html.fly-on .chapter__copy .scene__note { margin-top: min(14px, 1.6svh); }
+  html.fly-on .chapter__copy .callout { margin-top: min(14px, 1.8svh); }
+  html.fly-on .chapter__copy .callout p { font-size: clamp(.82rem, 1.9svh, .93rem); }
+}
+@media (min-width: 900px) and (max-height: 760px) {
+  html.fly-on .chapter__copy .scene__p { line-height: 1.42; }
+  html.fly-on .chapter__copy .scene__note { display: none; }   /* the capture note repeats under every screen's caption */
+}
+@media (max-width: 899px) { .callouts { display: contents; } }
+
+/* ---- #1216 (deploy 46052921271: introduction CLS 0.25 on a phone; also 46033617486): every .scene is a one-column grid
+   whose track was `auto`, so the "more of the engine" scene's nowrap tab row widened its track to ~505 px on a 412 px phone.
+   The page overflowed sideways, the phone widened its layout viewport to fit, and the fixed sky (its aurora) resized - a
+   layout shift. The track is now minmax(0, 1fr): no scene can be wider than the screen; the tab row scrolls inside itself. ---- */
+.scene { grid-template-columns: minmax(0, 1fr); }

@@ -1,0 +1,119 @@
+{
+ "brief": {
+  "audio": false,
+  "bytes": 1107398,
+  "data": "demo",
+  "poster_bytes": 19604,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:04:25Z",
+  "routes": [
+   "#/v3/today/brief"
+  ],
+  "seconds": 12.1,
+  "viewport": [
+   1200,
+   750
+  ]
+ },
+ "holdings": {
+  "audio": false,
+  "bytes": 1025830,
+  "data": "demo",
+  "poster_bytes": 10254,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:05:50Z",
+  "routes": [
+   "#/v3/portfolio/holdings",
+   "#/v3/portfolio/risk"
+  ],
+  "seconds": 15.6,
+  "viewport": [
+   1200,
+   750
+  ]
+ },
+ "observatory": {
+  "audio": false,
+  "bytes": 1144724,
+  "data": "demo",
+  "poster_bytes": 15308,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:04:53Z",
+  "routes": [
+   "#/v3/intel/observatory/TCS"
+  ],
+  "seconds": 12.2,
+  "viewport": [
+   1200,
+   750
+  ]
+ },
+ "record": {
+  "audio": false,
+  "bytes": 1492538,
+  "data": "demo",
+  "poster_bytes": 15694,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:05:31Z",
+  "routes": [
+   "#/v3/proof/record",
+   "#/v3/proof/calib"
+  ],
+  "seconds": 16.3,
+  "viewport": [
+   1200,
+   750
+  ]
+ },
+ "screener": {
+  "audio": false,
+  "bytes": 1387597,
+  "data": "demo",
+  "poster_bytes": 11076,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:05:12Z",
+  "routes": [
+   "#/v3/markets/screener",
+   "#/v3/markets/heatmap"
+  ],
+  "seconds": 15.2,
+  "viewport": [
+   1200,
+   750
+  ]
+ },
+ "ticker": {
+  "audio": false,
+  "bytes": 1121941,
+  "data": "demo",
+  "poster_bytes": 13388,
+  "poster_size": [
+   640,
+   400
+  ],
+  "recorded_utc": "2026-11-22T08:04:38Z",
+  "routes": [
+   "#/v3/markets/ticker/TCS"
+  ],
+  "seconds": 11.3,
+  "viewport": [
+   1200,
+   750
+  ]
+ }
+}

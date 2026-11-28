@@ -1,0 +1,8 @@
+{
+ "as_of_utc": "2026-11-28T11:36:59Z",
+ "available": false,
+ "reasons": [
+  "no atlas written yet (python -m algoreach data atlas)"
+ ],
+ "snapshot": true
+}

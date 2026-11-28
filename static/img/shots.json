@@ -1,0 +1,500 @@
+{
+ "blindside": {
+  "bytes": 81040,
+  "caption": "My Book \u00b7 Blindside Board: events ahead on names you hold but are not watching",
+  "captured_utc": "2026-11-21T07:26:39Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/portfolio/blindside",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 32356,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 78388,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "brief": {
+  "bytes": 171378,
+  "caption": "Today \u00b7 Morning Brief: material events, what changed overnight, the calendar ahead",
+  "captured_utc": "2026-11-20T21:51:41Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/today/brief",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 71622,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 168594,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "brief-phone": {
+  "bytes": 71952,
+  "caption": "Today on a phone",
+  "captured_utc": "2026-11-20T21:56:44Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1688,
+  "route": "#/v3/today/brief",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 26332,
+    "height": 844,
+    "width": 390
+   }
+  },
+  "viewport": [
+   390,
+   844
+  ],
+  "width": 780
+ },
+ "calib": {
+  "bytes": 127822,
+  "caption": "Proof \u00b7 Calibration: stated probability against measured frequency",
+  "captured_utc": "2026-11-20T21:54:13Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/proof/calib",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 52100,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 120594,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "experiments": {
+  "bytes": 98162,
+  "caption": "Proof \u00b7 Experiments: pre-registered records, walk-forward and intraday harness",
+  "captured_utc": "2026-11-21T07:27:55Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/proof/experiments",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 40444,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 92082,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "frontier": {
+  "bytes": 102498,
+  "caption": "My Book \u00b7 Frontier: theses, scenarios and the hedge a position would need",
+  "captured_utc": "2026-11-21T07:27:17Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/portfolio/frontier",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 42092,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 95876,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "heatmap": {
+  "bytes": 144010,
+  "caption": "Markets \u00b7 Sector Heatmap: sectors and names by the day's move",
+  "captured_utc": "2026-11-21T07:25:23Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/markets/heatmap",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 59218,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 145496,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "holdings": {
+  "bytes": 90444,
+  "caption": "My Book \u00b7 Holdings & Exposure: your book by sector, factor and name",
+  "captured_utc": "2026-11-20T21:55:28Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/portfolio/holdings",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 37964,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 85880,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "observatory": {
+  "bytes": 128020,
+  "caption": "Intelligence \u00b7 Observatory: one name, eight live readings, each linked to its evidence",
+  "captured_utc": "2026-11-21T07:23:28Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/intel/observatory/TCS",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 55898,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 174220,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "record": {
+  "bytes": 142386,
+  "caption": "Proof \u00b7 Track Record: every emitted call scored at its horizon",
+  "captured_utc": "2026-11-20T21:53:35Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/proof/record",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 59496,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 158314,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "risk": {
+  "bytes": 117430,
+  "caption": "My Book \u00b7 Risk & Stress: the book's move under named scenarios",
+  "captured_utc": "2026-11-20T21:56:06Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/portfolio/risk",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 48118,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 110702,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "screener": {
+  "bytes": 96256,
+  "caption": "Markets \u00b7 Screener: factor screens on stored bars",
+  "captured_utc": "2026-11-21T07:24:44Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/markets/screener",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 39006,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 90458,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "signals": {
+  "bytes": 155130,
+  "caption": "Proof \u00b7 Signals & Provenance: every research signal with its schema, horizon and source chain",
+  "captured_utc": "2026-11-21T07:24:06Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/proof/signals",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 64674,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 150854,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "strategies": {
+  "bytes": 106036,
+  "caption": "Proof \u00b7 Strategies: rule-based model portfolios, paper only",
+  "captured_utc": "2026-11-20T21:54:51Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/proof/strategies",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 43582,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 99618,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "stream": {
+  "bytes": 124280,
+  "caption": "Intelligence \u00b7 Event Stream: material items with their source, licence and time",
+  "captured_utc": "2026-11-20T21:52:57Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/intel/stream",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 51928,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 139170,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "stream-phone": {
+  "bytes": 57674,
+  "caption": "Event Stream on a phone",
+  "captured_utc": "2026-11-20T21:57:21Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1688,
+  "route": "#/v3/intel/stream",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 21400,
+    "height": 844,
+    "width": 390
+   }
+  },
+  "viewport": [
+   390,
+   844
+  ],
+  "width": 780
+ },
+ "ticker": {
+  "bytes": 116158,
+  "caption": "Markets \u00b7 Ticker Workbench: financials, events, derivatives and propagation for one name",
+  "captured_utc": "2026-11-20T21:52:19Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/markets/ticker/TCS",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 48756,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 142998,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ },
+ "ticker-phone": {
+  "bytes": 58750,
+  "caption": "Ticker Workbench on a phone",
+  "captured_utc": "2026-11-21T07:28:31Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1688,
+  "route": "#/v3/markets/ticker/TCS",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 22036,
+    "height": 844,
+    "width": 390
+   }
+  },
+  "viewport": [
+   390,
+   844
+  ],
+  "width": 780
+ },
+ "watchlist": {
+  "bytes": 115326,
+  "caption": "My Book \u00b7 Watchlist: the names you follow, with their events ahead",
+  "captured_utc": "2026-11-21T07:26:01Z",
+  "data": "demo",
+  "dpr": 2,
+  "height": 1800,
+  "route": "#/v3/portfolio/watchlist",
+  "scheme": "dark",
+  "variants": {
+   "1x": {
+    "bytes": 46240,
+    "height": 900,
+    "width": 1440
+   },
+   "4k": {
+    "bytes": 112626,
+    "height": 2400,
+    "width": 3840
+   }
+  },
+  "viewport": [
+   1440,
+   900
+  ],
+  "width": 2880
+ }
+}

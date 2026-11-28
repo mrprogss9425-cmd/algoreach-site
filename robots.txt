@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrprogss9425-cmd.github.io/algoreach-site/sitemap.xml

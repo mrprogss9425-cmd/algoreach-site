@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to read AlgoReach: scores, fits and data as is · AlgoReach</title>
+<meta name="description" content="A short course in reading the terminal: what a score is and is not, what a fit means, why the data is shown as is with its source and time, and why misses stay on the record.">
+<link rel="canonical" href="https://mrprogss9425-cmd.github.io/algoreach-site/learn/"><meta property="og:type" content="website">
+<meta property="og:site_name" content="AlgoReach">
+<meta property="og:title" content="How to read AlgoReach: scores, fits and data as is">
+<meta property="og:description" content="A short course in reading the terminal: what a score is and is not, what a fit means, why the data is shown as is with its source and time, and why misses stay on the record.">
+<meta property="og:url" content="https://mrprogss9425-cmd.github.io/algoreach-site/learn/"><meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#060609">
+<meta name="color-scheme" content="dark">
+<meta name="generator" content="algoreach-website">
+<meta name="algoreach-built" content="2026-11-28T11:36:59Z">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1116'/%3E%3Cg transform='translate(6.4 11.6) scale(.43)'%3E%3Cpolygon points='12,22 56,12 56,88 12,78' fill='%23E8E6E1' stroke='%231A1E26' stroke-width='6' stroke-linejoin='round'/%3E%3Cg stroke='%239CA1A9' stroke-width='4.5' stroke-linecap='round'%3E%3Cpath d='M20 36 48 30M20 47 48 41M20 58 48 52M20 69 48 63'/%3E%3C/g%3E%3Cpolygon points='56,12 110,24 110,78 56,88' fill='%231A1E26' stroke='%233A404B' stroke-width='3' stroke-linejoin='round'/%3E%3Cg stroke-width='4.5' stroke-linecap='round'%3E%3Cpath stroke='%23F2C3A3' d='M64 28 102 34'/%3E%3Cpath stroke='%23EAAA84' d='M64 38.5 102 44.5'/%3E%3Cpath stroke='%23E39A6F' d='M64 49 102 55'/%3E%3Cpath stroke='%23C77D52' d='M64 59.5 102 65.5'/%3E%3Cpath stroke='%23A9643C' d='M64 70 102 76'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"><link rel="stylesheet" href="/algoreach-site/static/site.css">
+<script>document.documentElement.classList.add('js');document.documentElement.setAttribute('data-theme','dark');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion-ok');if(window.requestAnimationFrame){document.documentElement.classList.add('fly-on')}}</script></head>
+<body class="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="intro__sky" aria-hidden="true">  <div class="intro__aurora"></div>
+  <svg class="l1" viewBox="0 0 1400 1800" preserveAspectRatio="xMidYMin slice"><g fill="#E6E6EA"><circle cx="589" cy="373" r="1.0"/><circle cx="663" cy="1002" r="0.6"/><circle cx="299" cy="1771" r="1.3"/><circle cx="1375" cy="1365" r="0.6"/><circle cx="1058" cy="68" r="0.8"/><circle cx="411" cy="221" r="0.6"/><circle cx="515" cy="959" r="0.8"/><circle cx="1011" cy="1083" r="1.3"/><circle cx="1024" cy="138" r="1.3"/><circle cx="664" cy="433" r="0.6"/><circle cx="567" cy="458" r="1.3"/><circle cx="284" cy="1621" r="1.3"/><circle cx="1382" cy="1517" r="1.0"/><circle cx="1039" cy="975" r="1.0"/><circle cx="724" cy="1372" r="1.0"/><circle cx="959" cy="1221" r="1.0"/><circle cx="122" cy="1120" r="1.0"/><circle cx="336" cy="1341" r="0.8"/><circle cx="1145" cy="447" r="1.0"/><circle cx="1018" cy="132" r="0.8"/><circle cx="1021" cy="1228" r="1.0"/><circle cx="1126" cy="1627" r="0.6"/><circle cx="67" cy="246" r="0.8"/><circle cx="697" cy="1040" r="0.6"/><circle cx="1233" cy="118" r="1.3"/><circle cx="1256" cy="1325" r="1.0"/><circle cx="624" cy="1245" r="0.8"/><circle cx="1091" cy="1268" r="0.8"/><circle cx="860" cy="1642" r="1.3"/><circle cx="1284" cy="1165" r="1.3"/><circle cx="1285" cy="1165" r="0.6"/><circle cx="239" cy="1079" r="1.3"/><circle cx="315" cy="813" r="1.0"/><circle cx="487" cy="614" r="0.8"/><circle cx="1349" cy="1218" r="0.8"/><circle cx="1088" cy="1012" r="1.3"/><circle cx="215" cy="1690" r="0.8"/><circle cx="647" cy="1289" r="0.6"/><circle cx="97" cy="503" r="1.3"/><circle cx="1391" cy="2" r="0.8"/><circle cx="871" cy="128" r="1.3"/><circle cx="246" cy="1118" r="1.0"/><circle cx="480" cy="467" r="1.3"/><circle cx="96" cy="497" r="1.3"/><circle cx="1206" cy="1189" r="1.3"/><circle cx="647" cy="1772" r="1.3"/><circle cx="41" cy="447" r="0.6"/><circle cx="140" cy="494" r="1.0"/><circle cx="1140" cy="925" r="1.3"/><circle cx="451" cy="596" r="1.0"/><circle cx="360" cy="1605" r="1.0"/><circle cx="160" cy="120" r="1.3"/><circle cx="639" cy="1568" r="1.3"/><circle cx="849" cy="1546" r="1.3"/><circle cx="163" cy="522" r="0.6"/><circle cx="254" cy="41" r="0.6"/><circle cx="192" cy="1016" r="0.6"/><circle cx="611" cy="1377" r="0.8"/><circle cx="209" cy="1602" r="1.0"/><circle cx="1164" cy="1739" r="1.0"/><circle cx="775" cy="1160" r="1.3"/><circle cx="1240" cy="555" r="0.6"/><circle cx="270" cy="1454" r="1.0"/><circle cx="910" cy="782" r="1.3"/><circle cx="1132" cy="373" r="1.3"/><circle cx="648" cy="1290" r="1.3"/><circle cx="845" cy="1167" r="0.6"/><circle cx="727" cy="123" r="1.0"/><circle cx="777" cy="768" r="1.3"/><circle cx="46" cy="785" r="1.0"/><circle cx="240" cy="1006" r="0.6"/><circle cx="1291" cy="386" r="1.3"/><circle cx="768" cy="22" r="1.3"/><circle cx="800" cy="1611" r="1.0"/><circle cx="185" cy="509" r="1.3"/><circle cx="676" cy="1782" r="1.3"/><circle cx="450" cy="274" r="0.6"/><circle cx="538" cy="1447" r="1.0"/><circle cx="10" cy="718" r="1.0"/><circle cx="556" cy="623" r="1.3"/><circle cx="1345" cy="226" r="1.0"/><circle cx="608" cy="207" r="1.0"/><circle cx="1058" cy="720" r="0.6"/><circle cx="1090" cy="852" r="0.8"/><circle cx="732" cy="905" r="1.0"/><circle cx="973" cy="923" r="1.3"/><circle cx="529" cy="969" r="0.8"/><circle cx="304" cy="113" r="1.0"/><circle cx="247" cy="318" r="1.3"/><circle cx="1121" cy="1219" r="1.3"/><circle cx="1071" cy="1358" r="1.0"/><circle cx="14" cy="1778" r="0.6"/><circle cx="1181" cy="278" r="1.0"/><circle cx="56" cy="442" r="0.8"/><circle cx="100" cy="177" r="0.8"/><circle cx="102" cy="635" r="0.8"/><circle cx="696" cy="1156" r="0.8"/><circle cx="879" cy="504" r="1.3"/><circle cx="522" cy="688" r="0.8"/><circle cx="1033" cy="202" r="1.0"/><circle cx="297" cy="1136" r="1.3"/><circle cx="1380" cy="857" r="0.8"/><circle cx="426" cy="1003" r="0.8"/><circle cx="909" cy="1642" r="0.6"/><circle cx="560" cy="1244" r="0.6"/><circle cx="732" cy="773" r="1.0"/><circle cx="498" cy="329" r="1.0"/><circle cx="132" cy="607" r="0.6"/><circle cx="486" cy="1689" r="0.8"/><circle cx="1017" cy="911" r="1.0"/><circle cx="690" cy="1122" r="0.6"/><circle cx="273" cy="299" r="0.8"/><circle cx="730" cy="20" r="0.8"/><circle cx="329" cy="165" r="1.3"/><circle cx="729" cy="708" r="1.0"/><circle cx="63" cy="539" r="1.0"/><circle cx="895" cy="233" r="0.6"/><circle cx="369" cy="129" r="1.0"/><circle cx="912" cy="519" r="0.8"/><circle cx="347" cy="319" r="1.3"/><circle cx="18" cy="586" r="0.8"/><circle cx="1004" cy="492" r="0.6"/><circle cx="138" cy="1238" r="0.6"/><circle cx="985" cy="1344" r="1.3"/><circle cx="505" cy="1187" r="0.6"/><circle cx="67" cy="976" r="1.3"/><circle cx="531" cy="177" r="1.0"/><circle cx="825" cy="149" r="0.6"/><circle cx="567" cy="1211" r="0.6"/><circle cx="247" cy="1679" r="1.0"/><circle cx="1066" cy="1225" r="1.0"/><circle cx="36" cy="1459" r="0.8"/><circle cx="98" cy="567" r="0.8"/><circle cx="126" cy="120" r="0.8"/><circle cx="246" cy="633" r="0.8"/><circle cx="936" cy="470" r="0.8"/><circle cx="851" cy="684" r="1.3"/><circle cx="1231" cy="1687" r="1.0"/><circle cx="1372" cy="194" r="0.8"/><circle cx="244" cy="100" r="1.0"/></g></svg>
+  <svg class="l2" viewBox="0 0 1400 1800" preserveAspectRatio="xMidYMin slice"><g fill="none" stroke="#4B6BFF" stroke-width=".8"><line x1="1095" y1="502" x2="671" y2="1145"/><line x1="671" y1="1145" x2="615" y2="1040"/><line x1="133" y1="1120" x2="490" y2="1567"/><line x1="1200" y1="1435" x2="974" y2="1198"/><line x1="974" y1="1198" x2="1113" y2="143"/><line x1="1113" y1="143" x2="307" y2="1441"/><line x1="272" y1="1672" x2="786" y2="1169"/><line x1="122" y1="123" x2="331" y2="873"/><line x1="331" y1="873" x2="519" y2="626"/><line x1="263" y1="845" x2="361" y2="1242"/><line x1="361" y1="1242" x2="773" y2="853"/><line x1="773" y1="853" x2="602" y2="956"/></g><g fill="#4B6BFF"><circle cx="159" cy="69" r="0.35"/><circle cx="295" cy="1709" r="0.65"/><circle cx="1095" cy="502" r="0.65"/><circle cx="671" cy="1145" r="0.35"/><circle cx="615" cy="1040" r="0.5"/><circle cx="666" cy="1590" r="0.65"/><circle cx="133" cy="1120" r="0.5"/><circle cx="490" cy="1567" r="0.35"/><circle cx="1175" cy="179" r="0.65"/><circle cx="106" cy="1504" r="0.5"/><circle cx="708" cy="1585" r="0.65"/><circle cx="1200" cy="1435" r="0.5"/><circle cx="974" cy="1198" r="0.35"/><circle cx="1113" cy="143" r="0.5"/><circle cx="307" cy="1441" r="0.35"/><circle cx="1272" cy="691" r="0.5"/><circle cx="566" cy="1018" r="0.5"/><circle cx="272" cy="1672" r="0.65"/><circle cx="786" cy="1169" r="0.5"/><circle cx="122" cy="123" r="0.5"/><circle cx="331" cy="873" r="0.65"/><circle cx="519" cy="626" r="0.35"/><circle cx="263" cy="845" r="0.35"/><circle cx="361" cy="1242" r="0.35"/><circle cx="773" cy="853" r="0.5"/><circle cx="602" cy="956" r="0.65"/></g></svg>
+</div>
+<header class="top" role="banner">
+  <div class="wrap top__row">
+    <a class="brand" href="/algoreach-site/" aria-label="AlgoReach home">
+      <svg class="brand__mark" viewBox="0 0 120 100" aria-hidden="true" focusable="false"><polygon points="12,22 56,12 56,88 12,78" fill="#E8E6E1" stroke="#1A1E26" stroke-width="6" stroke-linejoin="round"/><path d="M20 36 48 30M20 47 48 41M20 58 48 52M20 69 48 63" stroke="#9CA1A9" stroke-width="4.5" stroke-linecap="round"/><polygon points="56,12 110,24 110,78 56,88" fill="#1A1E26" stroke="#3A404B" stroke-width="3" stroke-linejoin="round"/><g stroke-width="4.5" stroke-linecap="round"><path stroke="#F2C3A3" d="M64 28 102 34"/><path stroke="#EAAA84" d="M64 38.5 102 44.5"/><path stroke="#E39A6F" d="M64 49 102 55"/><path stroke="#C77D52" d="M64 59.5 102 65.5"/><path stroke="#A9643C" d="M64 70 102 76"/></g></svg>
+      <span class="brand__name">AlgoReach</span>
+      <span class="brand__beta">beta</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" data-nav-toggle>
+      <span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__label">Menu</span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a href="/algoreach-site/platform/">Platform</a></li>
+        <li><a href="/algoreach-site/research/">Research</a></li>
+        <li><a href="/algoreach-site/portfolio-risk/">Portfolio &amp; Risk</a></li>
+        <li><a href="/algoreach-site/technology/">Technology</a></li>
+        <li><a href="/algoreach-site/institutions/">Institutions</a></li>
+        <li><a href="/algoreach-site/learn/" aria-current="page">Learn</a></li>
+        <li><a href="/algoreach-site/record/">Record</a></li>
+        <li><a href="/algoreach-site/about/">About</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn btn--primary" href="/algoreach-site/beta/">Request access</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+<section class="hero hero--shot">
+  <div class="wrap hero__grid hero__grid--shot">
+    <div class="hero__copy">
+      <p class="eyebrow">Learn</p>
+      <h1 class="hero__h1">How to read what AlgoReach shows you.</h1>
+      <p class="hero__lead">Every figure in the terminal is shown with its source, its time and its uncertainty. These briefs explain why, and how to read a score, a fit or a data panel without over-reading it.</p>
+      <dl class="hero__facts"><div><dt>Scores</dt><dd>calibrated or labelled</dd></div><div><dt>Fits</dt><dd>pre-registered</dd></div><div><dt>Data</dt><dd>sourced, timestamped</dd></div></dl>
+    </div>
+    <div class="hero__fig hero__fig--shot"><figure class="shot shot--hero" data-shot="calib">
+  <div class="shot__frame"><img src="/algoreach-site/static/img/calib.webp" alt="Proof · Calibration: stated probability against measured frequency. Screen capture of the AlgoReach terminal running on its demo dataset." width="2880" height="1800" fetchpriority="high" decoding="async" srcset="/algoreach-site/static/img/calib-1x.webp 1440w, /algoreach-site/static/img/calib.webp 2880w, /algoreach-site/static/img/calib-4k.webp 3840w" sizes="(min-width: 980px) 54vw, calc(100vw - 32px)"></div>
+  <figcaption><b>Proof · Calibration</b><span> stated probability against measured frequency</span><small>Demo data · captured 2026-11-20</small></figcaption>
+</figure>
+</div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec sec--band" aria-labelledby="sec-1" id="s-why-we-share-scores-fits-and-data-as-is">
+  <div class="sec__bandin">
+    <h2 id="sec-1" class="sec__h sec__h--big">Why we share scores, fits and data as is</h2>
+<p class="sec__p">A research tool that hides its working asks to be trusted. AlgoReach asks to be checked instead. Scores carry their evidence and counter-case, fits carry their coverage and out-of-sample result, and data panels carry the source, licence and timestamp of every value. If a reader can see where a number came from, they can disagree with it intelligently, and that is the point.</p><ul class="list"><li>A number without its source is an opinion. Every value names where it came from and when.</li><li>A probability without its calibration history is a guess. Every probability says whether it has been calibrated.</li><li>A record without its misses is marketing. The ledger keeps every call, scored, including the ones that were wrong.</li></ul>    <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">Two tools both say a stock is likely to rise. One shows only the arrow. The other shows that the call came from an order-win filing at 11:05, that calls of this kind came true 6 times in 10 in the past, and that a fall in the index below its last low would make the call wrong. Only the second can be checked, and argued with.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">Markets punish confident numbers that cannot be traced. Showing the working lets a reader find the weak link before money depends on it, and it keeps the engine honest: a figure that has to be shown has to be defensible.</p></div></div>
+
+  </div>
+</section>
+
+  <section class="sec sec--numbered" aria-labelledby="sec-2" id="s-reading-a-score">
+  <div class="sec__grid sec__grid--wide">
+    <div class="sec__side">
+      <h2 id="sec-2" class="sec__h sec__h--big">Reading a score</h2>
+<p class="sec__p">A score is a calibrated probability that a stated outcome happens within a stated horizon, for a stated event type. Three things to read with it: the calibration bucket (how often similar stated probabilities came true in the past), the evidence list (which measured links supported it) and the counter-case (what would make it wrong).</p>    </div>
+    <div class="sec__body">
+        <div class="cards cards--num">
+          <article class="card"><span class="card__n">01</span><h3 class="card__h">Calibrated</h3><p class="card__p">The stated probability has been compared with outcomes for this kind of call. Read it at face value, with the bucket&#39;s own error.</p></article>
+          <article class="card"><span class="card__n">02</span><h3 class="card__h">Uncalibrated</h3><p class="card__p">Too little history yet. Treat it as a direction with a reason, not a probability.</p></article>
+          <article class="card"><span class="card__n">03</span><h3 class="card__h">Horizon</h3><p class="card__p">The number of trading days the call is about. A score is not a view beyond its horizon.</p></article>
+          <article class="card"><span class="card__n">04</span><h3 class="card__h">Counter-case</h3><p class="card__p">The condition under which the engine would score itself wrong. If it is already true, the score is stale.</p></article>
+        </div>
+<p class="note">What AlgoReach does not publish: the detector rules, weights and thresholds behind a score. What it does publish: how often the scores were right, by type and bucket.</p>      <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">A score reads 65% that the stock closes higher in 5 sessions after a credit-rating upgrade, marked Calibrated. It means: of past calls stated near 65% for upgrades at a 5-session horizon, roughly 65 in 100 came true, within that bucket&#39;s error. It does not mean the price will rise, and it says nothing about session 6.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">A bare up or down arrow hides how sure the engine is. A probability tied to its own track record lets you size how much weight to give it, and lets the ledger prove later whether the 65% deserved to be 65%.</p></div></div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--tutorials" aria-labelledby="sec-3" id="s-watch-then-read">
+  <div class="sec__grid">
+    <div class="sec__side">
+<p class="eyebrow">Six clips, no narration</p>      <h2 id="sec-3" class="sec__h sec__h--big">Watch, then read</h2>
+<p class="sec__p">Each clip is a silent screen recording of the terminal on its demo dataset: one task, under half a minute. The notes beside it say what to look at and name the concept it teaches; the learning hub explains the concept in full.</p>    </div>
+    <div class="sec__body">
+<div class="tuts tuts--tabs" data-tutorials data-tabs>  <div class="tuts__tabs" role="tablist" aria-label="Tutorials"><button type="button" class="tuts__tab" role="tab" id="tab-tut-brief" aria-controls="tut-brief" aria-selected="true" tabindex="0" data-tab="brief">Read the morning brief</button><button type="button" class="tuts__tab" role="tab" id="tab-tut-ticker" aria-controls="tut-ticker" aria-selected="false" tabindex="-1" data-tab="ticker">Open one name&#39;s workbench</button><button type="button" class="tuts__tab" role="tab" id="tab-tut-observatory" aria-controls="tut-observatory" aria-selected="false" tabindex="-1" data-tab="observatory">Eight readings of one name</button><button type="button" class="tuts__tab" role="tab" id="tab-tut-screener" aria-controls="tut-screener" aria-selected="false" tabindex="-1" data-tab="screener">Screen, and read why a name is listed</button><button type="button" class="tuts__tab" role="tab" id="tab-tut-record" aria-controls="tut-record" aria-selected="false" tabindex="-1" data-tab="record">How a call is scored</button><button type="button" class="tuts__tab" role="tab" id="tab-tut-holdings" aria-controls="tut-holdings" aria-selected="false" tabindex="-1" data-tab="holdings">Your book, then what can hurt it</button></div>
+  <article class="tut" id="tut-brief" role="tabpanel" aria-labelledby="tab-tut-brief" data-panel="brief">
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/brief-poster.webp" width="1200" height="750" aria-label="Read the morning brief: silent screen recording of the AlgoReach terminal on its demo dataset, 12 seconds">
+        <source src="/algoreach-site/static/video/brief.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/brief.webm">Download the clip: Read the morning brief</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">12 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Use the terminal · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-brief">Read the morning brief</h3>
+      <p class="tut__lead">The day starts on Today: the material events, what changed overnight, the calendar ahead. Each panel says whether it shows live, last fetched or session-close data.</p>
+      <ol class="tut__steps"><li>The brief opens on the material events of the day, newest first.</li><li>Scroll: what changed overnight, then the calendar ahead.</li><li>Every panel carries its data basis and a UTC time; nothing is presented as live when it is not.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-data-as-is">Concept: Reading data as is</a></p>
+    </div>
+  </article>
+  <article class="tut" id="tut-ticker" role="tabpanel" aria-labelledby="tab-tut-ticker" data-panel="ticker" data-hidden>
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/ticker-poster.webp" width="1200" height="750" aria-label="Open one name&#39;s workbench: silent screen recording of the AlgoReach terminal on its demo dataset, 11 seconds">
+        <source src="/algoreach-site/static/video/ticker.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/ticker.webm">Download the clip: Open one name&#39;s workbench</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">11 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Use the terminal · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-ticker">Open one name&#39;s workbench</h3>
+      <p class="tut__lead">The ticker workbench puts financials, events, derivatives and propagation for one company on one board. Each figure opens a note with its definition and source.</p>
+      <ol class="tut__steps"><li>The workbench opens on the overview and the chart for one name.</li><li>Below: the stored event study beside the price path, then the financials.</li><li>Hover a figure: its note names the definition, the source and the owning page.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-a-score">Concept: Reading a score</a></p>
+    </div>
+  </article>
+  <article class="tut tut--study" id="tut-observatory" role="tabpanel" aria-labelledby="tab-tut-observatory" data-panel="observatory" data-hidden>
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/observatory-poster.webp" width="1200" height="750" aria-label="Eight readings of one name: silent screen recording of the AlgoReach terminal on its demo dataset, 12 seconds">
+        <source src="/algoreach-site/static/video/observatory.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/observatory.webm">Download the clip: Eight readings of one name</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">12 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Study a concept · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-observatory">Eight readings of one name</h3>
+      <p class="tut__lead">The Observatory shows what the engine read for a name and what it did not: event, crowd, fundamentals, institutional flow, assessment, signals on record, your book, what is ahead.</p>
+      <ol class="tut__steps"><li>Each node is one reading; its state says read, not read or nothing stored, never a guess.</li><li>The links between nodes are the relationships the engine measured for this kind of event.</li><li>Scroll: each reading opens into the evidence it came from.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-a-score">Concept: Reading a score</a></p>
+    </div>
+  </article>
+  <article class="tut" id="tut-screener" role="tabpanel" aria-labelledby="tab-tut-screener" data-panel="screener" data-hidden>
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/screener-poster.webp" width="1200" height="750" aria-label="Screen, and read why a name is listed: silent screen recording of the AlgoReach terminal on its demo dataset, 15 seconds">
+        <source src="/algoreach-site/static/video/screener.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/screener.webm">Download the clip: Screen, and read why a name is listed</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">15 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Use the terminal · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-screener">Screen, and read why a name is listed</h3>
+      <p class="tut__lead">Factor screens run on stored bars with their data age shown. Every row says which factor put it there and on what basis.</p>
+      <ol class="tut__steps"><li>The screener opens on the stored screens: exposed but unmoved, moved but unexposed, chain incomplete, hedge broken.</li><li>Each row names its basis; the data-age badge says how old the bars are.</li><li>Scroll: the sector heatmap shades by the measured move, not by a verdict.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-data-as-is">Concept: Reading data as is</a></p>
+    </div>
+  </article>
+  <article class="tut tut--study" id="tut-record" role="tabpanel" aria-labelledby="tab-tut-record" data-panel="record" data-hidden>
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/record-poster.webp" width="1200" height="750" aria-label="How a call is scored: silent screen recording of the AlgoReach terminal on its demo dataset, 16 seconds">
+        <source src="/algoreach-site/static/video/record.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/record.webm">Download the clip: How a call is scored</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">16 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Study a concept · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-record">How a call is scored</h3>
+      <p class="tut__lead">A call names its direction, horizon and stated probability when it is written. When the horizon arrives it is scored against the market, hit or miss, and the result is appended. Calibration then compares what was stated with what was measured.</p>
+      <ol class="tut__steps"><li>The track record lists every emitted call with its horizon and its score; misses stay.</li><li>Calibration: stated probability on one axis, measured frequency on the other, bucket by bucket.</li><li>A bucket far from the diagonal is a bucket the engine has to earn; the page says so.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-a-score">Concept: Reading a score</a></p>
+    </div>
+  </article>
+  <article class="tut" id="tut-holdings" role="tabpanel" aria-labelledby="tab-tut-holdings" data-panel="holdings" data-hidden>
+    <div class="tut__media">
+      <video class="tut__video" data-tutorial preload="none" muted playsinline loop controls poster="/algoreach-site/static/video/holdings-poster.webp" width="1200" height="750" aria-label="Your book, then what can hurt it: silent screen recording of the AlgoReach terminal on its demo dataset, 16 seconds">
+        <source src="/algoreach-site/static/video/holdings.webm" type="video/webm">
+        <a href="/algoreach-site/static/video/holdings.webm">Download the clip: Your book, then what can hurt it</a>
+      </video>
+      <span class="tut__len" aria-hidden="true">16 s · silent</span>
+    </div>
+    <div class="tut__body">
+      <p class="tut__kind">Use the terminal · demo data · recorded 2026-11-22</p>
+      <h3 class="tut__h" id="tut-h-holdings">Your book, then what can hurt it</h3>
+      <p class="tut__lead">Import a broker statement and the book is mapped to sectors, factors and the events ahead. Risk and stress shows the book&#39;s move under named scenarios, with the sign convention stated on the page.</p>
+      <ol class="tut__steps"><li>Holdings and exposure: the book by sector, factor and single name, from the statement you imported.</li><li>Scroll: concentration and the events ahead on names you hold.</li><li>Risk and stress: each scenario is named, its assumptions stated, the move shown in rupee crore and percent.</li></ol>
+      <p class="tut__learn"><a href="/algoreach-site/learn/#s-reading-data-as-is">Concept: Reading data as is</a></p>
+    </div>
+  </article>
+</div>
+<p class="note">Demo data throughout. Nothing in a clip is a recommendation; the figures are illustrative and the pages are the shipped terminal.</p>      
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--split" aria-labelledby="sec-4" id="s-reading-a-fit">
+  <div class="sec__grid sec__grid--split">
+    <div class="sec__side">
+      <h2 id="sec-4" class="sec__h sec__h--big">Reading a fit</h2>
+<p class="sec__p">A fit is a measured relationship between a crowd-behaviour series and what the market did afterwards, for example between a divergence of stated and revealed sentiment and the price path that followed. A fit is only shown after it was pre-registered as a hypothesis and checked on data it had not seen.</p><ul class="list"><li>Coverage first: a fit over a thin series is visibly thin, and the page says so.</li><li>Pre-registration date: the question was written down before the answer was measured.</li><li>Out-of-sample: the result on data the fit was not tuned on is the one that counts.</li><li>A failed fit stays on the failed-ideas list and is not re-tuned until it passes.</li></ul>    </div>
+    <div class="sec__body">
+<figure class="shot shot--inline" data-shot="ticker">
+  <div class="shot__frame"><img src="/algoreach-site/static/img/ticker.webp" alt="Markets · Ticker Workbench: financials, events, derivatives and propagation for one name. Screen capture of the AlgoReach terminal running on its demo dataset." width="2880" height="1800" loading="lazy" decoding="async" srcset="/algoreach-site/static/img/ticker-1x.webp 1440w, /algoreach-site/static/img/ticker.webp 2880w, /algoreach-site/static/img/ticker-4k.webp 3840w" sizes="(min-width: 900px) 48vw, calc(100vw - 32px)"></div>
+  <figcaption><b>Markets · Ticker Workbench</b><span> financials, events, derivatives and propagation for one name</span><small>Demo data · captured 2026-11-20</small></figcaption>
+</figure>
+      <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">Suppose the hypothesis, written down first, is: when a name&#39;s news mood turns sharply positive while institutions are net sellers that week, the next 5 sessions lag the index. It is then tested only on weeks it never saw. If the measured effect sits inside what random dates give, the fit is marked NULL and stays off.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">With enough tries, any pattern looks real on old data. Writing the question first and judging it on unseen data is how AlgoReach avoids selling a coincidence as a discovery; a NULL is published because it saves you from it too.</p></div></div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--numbered" aria-labelledby="sec-5" id="s-reading-data-as-is">
+  <div class="sec__grid sec__grid--wide">
+    <div class="sec__side">
+      <h2 id="sec-5" class="sec__h sec__h--big">Reading data as is</h2>
+<p class="sec__p">Prices, flows, filings and positioning are shown as they were recorded: with a UTC timestamp, a source and a licence tag, and a data-age badge when a panel is older than its usual refresh. Nothing is smoothed, back-filled or re-stated without a visible note.</p>    </div>
+    <div class="sec__body">
+        <div class="cards cards--num">
+          <article class="card"><span class="card__n">01</span><h3 class="card__h">Live</h3><p class="card__p">Read during the session from the live feed; the panel says so and shows the last tick time.</p></article>
+          <article class="card"><span class="card__n">02</span><h3 class="card__h">Last fetched</h3><p class="card__p">The most recent stored value with its fetch time. Older than its cadence means the source was slow or blocked.</p></article>
+          <article class="card"><span class="card__n">03</span><h3 class="card__h">Session close</h3><p class="card__p">The last close, including Friday&#39;s close over a weekend. Never presented as live.</p></article>
+          <article class="card"><span class="card__n">04</span><h3 class="card__h">Blocked source</h3><p class="card__p">A source that refused automated access is not fetched, and the gap is shown rather than filled.</p></article>
+        </div>
+      <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">On a Saturday the price panel shows Friday&#39;s close with the tag Session close and the time it was fetched, not a live-looking number. If the shareholding source refused automated access this week, the panel shows the gap and the date of the last good value instead of carrying an old figure forward.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">A value that looks live but is a day old leads to a wrong decision at the worst moment. Showing source, time and freshness on every panel means you always know what you are looking at.</p></div></div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--side" aria-labelledby="sec-6" id="s-shadow-periods-and-planned-items">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-6" class="sec__h">Shadow periods and planned items</h2>
+    </div>
+    <div class="sec__body">
+<p class="sec__p">New analytics ship switched off, run in shadow for at least five trading days, and are compared with live before anyone sees them. A tile marked Planned on this site describes work that is not built yet; a tile marked Built names a page that exists in the terminal today.</p>      <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">A new alert rule is switched on in shadow: it writes what it would have sent for at least five trading days, nobody receives it, and the shadow log is compared with what actually happened before it goes live.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">A rule that misfires on day one costs trust that takes months to rebuild. Shadow first means a new idea is judged on real sessions before it can reach you.</p></div></div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--splitl" aria-labelledby="sec-7" id="s-what-the-model-is-learning">
+  <div class="sec__grid sec__grid--split sec__grid--splitl">
+    <div class="sec__side">
+      <h2 id="sec-7" class="sec__h sec__h--big">What the model is learning</h2>
+<p class="sec__p">Calibration improves as calls reach their horizon and are scored; coverage improves as sources stay green and series lengthen; fits are added only when they survive pre-registration and an out-of-sample check. The terminal&#39;s coming-soon page shows those counters as they stand.</p><p class="note">None of this is advice. It is a way of reading research output so that it informs a decision you make yourself.</p>    </div>
+    <div class="sec__body">
+<figure class="shot shot--inline" data-shot="record">
+  <div class="shot__frame"><img src="/algoreach-site/static/img/record.webp" alt="Proof · Track Record: every emitted call scored at its horizon. Screen capture of the AlgoReach terminal running on its demo dataset." width="2880" height="1800" loading="lazy" decoding="async" srcset="/algoreach-site/static/img/record-1x.webp 1440w, /algoreach-site/static/img/record.webp 2880w, /algoreach-site/static/img/record-4k.webp 3840w" sizes="(min-width: 900px) 48vw, calc(100vw - 32px)"></div>
+  <figcaption><b>Proof · Track Record</b><span> every emitted call scored at its horizon</span><small>Demo data · captured 2026-11-20</small></figcaption>
+</figure>
+      <div class="explain" data-testid="explain">
+<div class="explain__box"><p class="explain__k">Example</p><p class="explain__p">A new event type starts Uncalibrated. After enough of its calls have reached their horizon and been scored, its probabilities can be checked against outcomes, and the label changes only when the record supports it.</p></div><div class="explain__box explain__box--why"><p class="explain__k">Why AlgoReach does this</p><p class="explain__p">Learning that is not measured is just drift. Counting scored calls, healthy sources and surviving fits shows how much the engine actually knows today, not how much it hopes to.</p></div></div>
+
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap foot__grid">
+    <div class="foot__col foot__brand">
+      <p class="foot__name">AlgoReach</p>
+      <p class="foot__tag">Market intelligence for Indian equities, with the record kept in the open.</p>
+      <p class="foot__status"><span class="pill">Invite-only beta</span></p>
+<p class="foot__p">AlgoReach is a research engine for Indian and US listed equities, run by its founder from Mumbai. It reads public disclosures, news and market data, measures how the crowd behaves, and writes every conclusion to a ledger that is scored against what the market did next.</p><p class="foot__p">Questions, corrections and access requests go through the beta access form. There is no sales desk and no newsletter.</p>    </div>
+    <nav class="foot__col" aria-label="Site">
+      <p class="foot__h">Site</p>
+      <ul class="foot__links foot__links--plain"><li><a href="/algoreach-site/">Home</a></li><li><a href="/algoreach-site/platform/">Platform</a></li><li><a href="/algoreach-site/research/">Research</a></li><li><a href="/algoreach-site/portfolio-risk/">Portfolio &amp; Risk</a></li><li><a href="/algoreach-site/technology/">Technology</a></li><li><a href="/algoreach-site/institutions/">Institutions</a></li><li><a href="/algoreach-site/learn/" aria-current="page">Learn</a></li><li><a href="/algoreach-site/record/">Record</a></li><li><a href="/algoreach-site/depth/">Data</a></li><li><a href="/algoreach-site/methods/">Methods</a></li><li><a href="/algoreach-site/terminal/">Terminal</a></li><li><a href="/algoreach-site/about/">About</a></li><li><a href="/algoreach-site/beta/">Beta access</a></li>      </ul>
+    </nav>
+    <nav class="foot__col" aria-label="Legal">
+      <p class="foot__h">Legal</p>
+      <ul class="foot__links foot__links--plain">
+<li><a href="/algoreach-site/legal/privacy/">Privacy notice</a></li><li><a href="/algoreach-site/legal/terms/">Terms of use</a></li><li><a href="/algoreach-site/legal/risk/">Financial risk disclosure</a></li><li><a href="/algoreach-site/legal/data/">Data attribution and licensing</a></li>      </ul>
+    </nav>
+    <div class="foot__col foot__note">
+      <p class="foot__h">Risk disclosure</p>
+<p>AlgoReach provides research output: data, measurements, classifications and probabilities derived from public information. It is not investment advice, it is not tailored to your circumstances, and it does not place, route or recommend trades.</p><p>Investing in securities involves risk, including the loss of the capital invested. Probabilities on this site and in the terminal are estimates: a well-calibrated 70 percent call is still expected to be wrong about three times in ten. The record keeps every call, hits and misses alike, and the current record shows no proven edge.</p><p>Past measurements of the record do not indicate future results. Strategy and scenario figures are paper results under stated assumptions; they exclude slippage, market impact, fees and taxes unless a page says otherwise.</p>      <ul class="foot__facts"><li><b>Regulatory status.</b> no registration with any regulator is held or claimed; consult a registered professional before acting</li><li><b>Data.</b> shown under the terms of its owners, with source, time and licence on each item; not for redistribution</li><li><b>Your decisions.</b> remain yours; AlgoReach&#39;s output is one input among the ones you weigh</li></ul>
+      <p class="foot__more"><a href="/algoreach-site/legal/risk/">Read the full risk disclosure</a></p>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    <p>&copy; 2026 AlgoReach · Siddharth Singh · India</p>
+    <p>Research output, not investment advice. No trades are placed.</p>
+    <p class="foot__built">Page built 2026-11-28T11:36:59Z</p>
+  </div>
+</footer><script src="/algoreach-site/static/site.js" defer></script>
+<script src="/algoreach-site/static/ring.js" defer></script>
+</body>
+</html>

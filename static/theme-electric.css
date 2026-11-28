@@ -1,0 +1,50 @@
+/* Slot #1090: public-site theme layer "Electric" (owner 21 Nov 2026, "Switch to Electric": the second 60-30-10 reel).
+   Midnight Black as the main surface (60 %), Electric Blue for links, highlights, chart bars and the illuminated
+   lines (30 %), Sunset Orange #FF7A1A as the one accent for actions (10 %). Same token NAMES as ui/src/styles/tokens.css,
+   scoped to body.site. Every text token >= 4.5:1 on s0 / s1 / s2 in both modes (tests/test_s1090_electric.py measures
+   the pairs). Financial green / red keep their meaning; caution is a pale gold so it never reads as the accent.
+   WEBSITE_THEME=midnight, hybrid or navy select the earlier layers. */
+body.site, body.site [data-theme="light"] {
+  /* light: cool paper, black type, electric links, orange actions */
+  --s0: #F3F3F6; --s1: #FFFFFF; --s2: #F8F8FA; --s3: #FFFFFF; --well: #ECEDF2;
+  --line: #D7D9E0; --line2: #E4E5EB; --grid: #E4E5EB;
+  --ink: #0B0B0E; --ink2: #262833; --muted: #585B6A; --faint: #5E6171;
+  --accent: #FF7A1A; --accent-ink: #1A0E04; --accent-soft: #FFE9D8;
+  --link: #2D47E0; --link-soft: #E3E8FF; --focus: #2D47E0;
+  --up: #1F7A4F; --down: #B4413A; --warn: #8F5A10; --caution: #8F5A10; --caution-soft: #FFE9D8;
+  --glass: rgba(255,255,255,.84); --ar-teal: #0B0B0E; --platinum: #8A8DA0; --champagne: #FF7A1A; --electric: #2D47E0; --stone: #C8C9D2; --midnight: #0B0B0E;
+  --scrim: rgba(11,11,14,.4);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) body.site {
+  --s0: #0B0B0E; --s1: #121318; --s2: #17181E; --s3: #1D1F27; --well: #0E0F13;
+  --line: #262833; --line2: #1F2129; --grid: #1F2129;
+  --ink: #ECECF0; --ink2: #C8C9D2; --muted: #9B9DAA; --faint: #8C8E9B;
+  --accent: #FF7A1A; --accent-ink: #1A0E04; --accent-soft: #3A220E;
+  --link: #7F97FF; --link-soft: #1A2250; --focus: #7F97FF;
+  --up: #5CC28A; --down: #E8776E; --warn: #F5B041; --caution: #F5B041; --caution-soft: #3A2C10;
+  --glass: rgba(18,19,24,.86); --ar-teal: #060609; --platinum: #E6E6EA; --champagne: #FF7A1A; --electric: #4B6BFF; --stone: #C8C9D2; --midnight: #0B0B0E;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+} }
+html[data-theme="dark"] body.site {
+  --s0: #0B0B0E; --s1: #121318; --s2: #17181E; --s3: #1D1F27; --well: #0E0F13;
+  --line: #262833; --line2: #1F2129; --grid: #1F2129;
+  --ink: #ECECF0; --ink2: #C8C9D2; --muted: #9B9DAA; --faint: #8C8E9B;
+  --accent: #FF7A1A; --accent-ink: #1A0E04; --accent-soft: #3A220E;
+  --link: #7F97FF; --link-soft: #1A2250; --focus: #7F97FF;
+  --up: #5CC28A; --down: #E8776E; --warn: #F5B041; --caution: #F5B041; --caution-soft: #3A2C10;
+  --glass: rgba(18,19,24,.86); --ar-teal: #060609; --platinum: #E6E6EA; --champagne: #FF7A1A; --electric: #4B6BFF; --stone: #C8C9D2; --midnight: #0B0B0E;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+/* the 30 %: electric blue carries eyebrows, chart bars, hero facts and the active nav line; orange stays for actions */
+body.site .eyebrow, body.site .scene__n { color: var(--link); }                      /* text-sized blue uses the link shade (>= 4.5:1); graphics use --electric */
+body.site .wchart__bar { fill: var(--electric); }
+body.site .hero__facts dt, body.site .card__n, body.site .tl__n, body.site .layers6__n { color: var(--link); }
+body.site .nav__list a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--electric); }
+body.site .band { background: #060609; color: #ECECF0; border: 1px solid #262833; }
+body.site .band__h { color: #FFFFFF; }
+body.site .band__p { color: #C8C9D2; }
+/* #1208: .brand__mark colours are fixed in the SVG (ledger mark); the theme overrides here are retired */
+body.site .shot__frame { background: #0B0B0E; }

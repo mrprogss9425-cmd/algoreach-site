@@ -1,0 +1,43 @@
+/* Slot #1068: public-site theme layer "Hybrid Premium" (direction C, docs/website-studio/DIRECTIONS.html).
+   Graphite-obsidian surfaces, champagne accent, platinum neutrals. Same token NAMES as ui/src/styles/tokens.css, new
+   values, scoped to body.site so the terminal keeps Navy Ledger until the owner applies the identity app-wide
+   (App Design Studio contract). Every text token >= 4.5:1 on s0/s1 (measured in DIRECTIONS.html). WEBSITE_THEME=navy
+   drops this file. up/down/caution keep their meaning; amber stays caution-only. */
+body.site, body.site [data-theme="light"] {
+  --s0: #F3F1EC; --s1: #FFFFFF; --s2: #FAF8F3; --s3: #FFFFFF; --well: #F6F3ED;
+  --line: #DAD5CB; --line2: #E6E1D7; --grid: #E6E1D7;
+  --ink: #1A1C20; --ink2: #34373C; --muted: #656158; --faint: #6E6A61;
+  --accent: #806327; --accent-ink: #FFFFFF; --accent-soft: #EFE7D5;
+  --link: #7A5E22; --link-soft: #EFE7D5; --focus: #806327;
+  --up: #2A7A4E; --down: #A9453B; --warn: #8F6210; --caution: #8F6210; --caution-soft: #F6EBD3;
+  --glass: rgba(255,255,255,.82); --ar-teal: #1A1C20; --platinum: #BFC3C9; --champagne: #CDB07C;
+  --scrim: rgba(26,28,32,.4);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) body.site {
+  --s0: #111316; --s1: #181B1F; --s2: #1F2328; --s3: #262B31; --well: #141719;
+  --line: #2C3137; --line2: #23272C; --grid: #23272C;
+  --ink: #EAE7E1; --ink2: #CBC7BF; --muted: #9D9890; --faint: #8F8A82;
+  --accent: #CDB07C; --accent-ink: #161410; --accent-soft: #2A271F;
+  --link: #D6BC8A; --link-soft: #2A271F; --focus: #CDB07C;
+  --up: #86BC95; --down: #DA8A80; --warn: #D9A441; --caution: #D9A441; --caution-soft: #33290F;
+  --glass: rgba(24,27,31,.86); --ar-teal: #0C0D10; --platinum: #BFC3C9; --champagne: #CDB07C;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+} }
+html[data-theme="dark"] body.site {
+  --s0: #111316; --s1: #181B1F; --s2: #1F2328; --s3: #262B31; --well: #141719;
+  --line: #2C3137; --line2: #23272C; --grid: #23272C;
+  --ink: #EAE7E1; --ink2: #CBC7BF; --muted: #9D9890; --faint: #8F8A82;
+  --accent: #CDB07C; --accent-ink: #161410; --accent-soft: #2A271F;
+  --link: #D6BC8A; --link-soft: #2A271F; --focus: #CDB07C;
+  --up: #86BC95; --down: #DA8A80; --warn: #D9A441; --caution: #D9A441; --caution-soft: #33290F;
+  --glass: rgba(24,27,31,.86); --ar-teal: #0C0D10; --platinum: #BFC3C9; --champagne: #CDB07C;
+  --scrim: rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+/* the dark band on the home page reads as obsidian with champagne, not navy */
+body.site .band { background: #0C0D10; color: #EAE7E1; border: 1px solid #2C3137; }
+body.site .band__h { color: #F4F1EA; }
+body.site .band__p { color: #CBC7BF; }
+/* #1208: .brand__mark colours are fixed in the SVG (ledger mark); the theme overrides here are retired */

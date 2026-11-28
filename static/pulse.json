@@ -1,0 +1,32 @@
+{
+ "as_of_utc": "2026-11-28T11:36:59Z",
+ "available": false,
+ "ledger": null,
+ "reasons": [
+  "no readiness or source-health record yet"
+ ],
+ "snapshot": true,
+ "sources": null,
+ "stages": [
+  {
+   "id": "ingestion",
+   "label": "Ingesting public disclosures, news and market data"
+  },
+  {
+   "id": "verification",
+   "label": "Verifying, de-duplicating and attributing every record"
+  },
+  {
+   "id": "calibration",
+   "label": "Calibrating stated probabilities against outcomes"
+  },
+  {
+   "id": "shadow",
+   "label": "Running new analytics in shadow before they go live"
+  },
+  {
+   "id": "beta",
+   "label": "Preparing invite-only beta access"
+  }
+ ]
+}

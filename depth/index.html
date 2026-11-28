@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The data: what is stored, since when, what is missing · AlgoReach</title>
+<meta name="description" content="Every series AlgoReach stores, the first and last date held, how many days, the depth the data programme aims at and what still closes each gap. Counts and dates only.">
+<link rel="canonical" href="https://mrprogss9425-cmd.github.io/algoreach-site/depth/"><meta property="og:type" content="website">
+<meta property="og:site_name" content="AlgoReach">
+<meta property="og:title" content="The data: what is stored, since when, what is missing">
+<meta property="og:description" content="Every series AlgoReach stores, the first and last date held, how many days, the depth the data programme aims at and what still closes each gap. Counts and dates only.">
+<meta property="og:url" content="https://mrprogss9425-cmd.github.io/algoreach-site/depth/"><meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#060609">
+<meta name="color-scheme" content="dark">
+<meta name="generator" content="algoreach-website">
+<meta name="algoreach-built" content="2026-11-28T11:36:59Z">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1116'/%3E%3Cg transform='translate(6.4 11.6) scale(.43)'%3E%3Cpolygon points='12,22 56,12 56,88 12,78' fill='%23E8E6E1' stroke='%231A1E26' stroke-width='6' stroke-linejoin='round'/%3E%3Cg stroke='%239CA1A9' stroke-width='4.5' stroke-linecap='round'%3E%3Cpath d='M20 36 48 30M20 47 48 41M20 58 48 52M20 69 48 63'/%3E%3C/g%3E%3Cpolygon points='56,12 110,24 110,78 56,88' fill='%231A1E26' stroke='%233A404B' stroke-width='3' stroke-linejoin='round'/%3E%3Cg stroke-width='4.5' stroke-linecap='round'%3E%3Cpath stroke='%23F2C3A3' d='M64 28 102 34'/%3E%3Cpath stroke='%23EAAA84' d='M64 38.5 102 44.5'/%3E%3Cpath stroke='%23E39A6F' d='M64 49 102 55'/%3E%3Cpath stroke='%23C77D52' d='M64 59.5 102 65.5'/%3E%3Cpath stroke='%23A9643C' d='M64 70 102 76'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"><link rel="stylesheet" href="/algoreach-site/static/site.css">
+<script>document.documentElement.classList.add('js');document.documentElement.setAttribute('data-theme','dark');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion-ok');if(window.requestAnimationFrame){document.documentElement.classList.add('fly-on')}}</script></head>
+<body class="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="intro__sky" aria-hidden="true">  <div class="intro__aurora"></div>
+  <svg class="l1" viewBox="0 0 1400 1800" preserveAspectRatio="xMidYMin slice"><g fill="#E6E6EA"><circle cx="589" cy="373" r="1.0"/><circle cx="663" cy="1002" r="0.6"/><circle cx="299" cy="1771" r="1.3"/><circle cx="1375" cy="1365" r="0.6"/><circle cx="1058" cy="68" r="0.8"/><circle cx="411" cy="221" r="0.6"/><circle cx="515" cy="959" r="0.8"/><circle cx="1011" cy="1083" r="1.3"/><circle cx="1024" cy="138" r="1.3"/><circle cx="664" cy="433" r="0.6"/><circle cx="567" cy="458" r="1.3"/><circle cx="284" cy="1621" r="1.3"/><circle cx="1382" cy="1517" r="1.0"/><circle cx="1039" cy="975" r="1.0"/><circle cx="724" cy="1372" r="1.0"/><circle cx="959" cy="1221" r="1.0"/><circle cx="122" cy="1120" r="1.0"/><circle cx="336" cy="1341" r="0.8"/><circle cx="1145" cy="447" r="1.0"/><circle cx="1018" cy="132" r="0.8"/><circle cx="1021" cy="1228" r="1.0"/><circle cx="1126" cy="1627" r="0.6"/><circle cx="67" cy="246" r="0.8"/><circle cx="697" cy="1040" r="0.6"/><circle cx="1233" cy="118" r="1.3"/><circle cx="1256" cy="1325" r="1.0"/><circle cx="624" cy="1245" r="0.8"/><circle cx="1091" cy="1268" r="0.8"/><circle cx="860" cy="1642" r="1.3"/><circle cx="1284" cy="1165" r="1.3"/><circle cx="1285" cy="1165" r="0.6"/><circle cx="239" cy="1079" r="1.3"/><circle cx="315" cy="813" r="1.0"/><circle cx="487" cy="614" r="0.8"/><circle cx="1349" cy="1218" r="0.8"/><circle cx="1088" cy="1012" r="1.3"/><circle cx="215" cy="1690" r="0.8"/><circle cx="647" cy="1289" r="0.6"/><circle cx="97" cy="503" r="1.3"/><circle cx="1391" cy="2" r="0.8"/><circle cx="871" cy="128" r="1.3"/><circle cx="246" cy="1118" r="1.0"/><circle cx="480" cy="467" r="1.3"/><circle cx="96" cy="497" r="1.3"/><circle cx="1206" cy="1189" r="1.3"/><circle cx="647" cy="1772" r="1.3"/><circle cx="41" cy="447" r="0.6"/><circle cx="140" cy="494" r="1.0"/><circle cx="1140" cy="925" r="1.3"/><circle cx="451" cy="596" r="1.0"/><circle cx="360" cy="1605" r="1.0"/><circle cx="160" cy="120" r="1.3"/><circle cx="639" cy="1568" r="1.3"/><circle cx="849" cy="1546" r="1.3"/><circle cx="163" cy="522" r="0.6"/><circle cx="254" cy="41" r="0.6"/><circle cx="192" cy="1016" r="0.6"/><circle cx="611" cy="1377" r="0.8"/><circle cx="209" cy="1602" r="1.0"/><circle cx="1164" cy="1739" r="1.0"/><circle cx="775" cy="1160" r="1.3"/><circle cx="1240" cy="555" r="0.6"/><circle cx="270" cy="1454" r="1.0"/><circle cx="910" cy="782" r="1.3"/><circle cx="1132" cy="373" r="1.3"/><circle cx="648" cy="1290" r="1.3"/><circle cx="845" cy="1167" r="0.6"/><circle cx="727" cy="123" r="1.0"/><circle cx="777" cy="768" r="1.3"/><circle cx="46" cy="785" r="1.0"/><circle cx="240" cy="1006" r="0.6"/><circle cx="1291" cy="386" r="1.3"/><circle cx="768" cy="22" r="1.3"/><circle cx="800" cy="1611" r="1.0"/><circle cx="185" cy="509" r="1.3"/><circle cx="676" cy="1782" r="1.3"/><circle cx="450" cy="274" r="0.6"/><circle cx="538" cy="1447" r="1.0"/><circle cx="10" cy="718" r="1.0"/><circle cx="556" cy="623" r="1.3"/><circle cx="1345" cy="226" r="1.0"/><circle cx="608" cy="207" r="1.0"/><circle cx="1058" cy="720" r="0.6"/><circle cx="1090" cy="852" r="0.8"/><circle cx="732" cy="905" r="1.0"/><circle cx="973" cy="923" r="1.3"/><circle cx="529" cy="969" r="0.8"/><circle cx="304" cy="113" r="1.0"/><circle cx="247" cy="318" r="1.3"/><circle cx="1121" cy="1219" r="1.3"/><circle cx="1071" cy="1358" r="1.0"/><circle cx="14" cy="1778" r="0.6"/><circle cx="1181" cy="278" r="1.0"/><circle cx="56" cy="442" r="0.8"/><circle cx="100" cy="177" r="0.8"/><circle cx="102" cy="635" r="0.8"/><circle cx="696" cy="1156" r="0.8"/><circle cx="879" cy="504" r="1.3"/><circle cx="522" cy="688" r="0.8"/><circle cx="1033" cy="202" r="1.0"/><circle cx="297" cy="1136" r="1.3"/><circle cx="1380" cy="857" r="0.8"/><circle cx="426" cy="1003" r="0.8"/><circle cx="909" cy="1642" r="0.6"/><circle cx="560" cy="1244" r="0.6"/><circle cx="732" cy="773" r="1.0"/><circle cx="498" cy="329" r="1.0"/><circle cx="132" cy="607" r="0.6"/><circle cx="486" cy="1689" r="0.8"/><circle cx="1017" cy="911" r="1.0"/><circle cx="690" cy="1122" r="0.6"/><circle cx="273" cy="299" r="0.8"/><circle cx="730" cy="20" r="0.8"/><circle cx="329" cy="165" r="1.3"/><circle cx="729" cy="708" r="1.0"/><circle cx="63" cy="539" r="1.0"/><circle cx="895" cy="233" r="0.6"/><circle cx="369" cy="129" r="1.0"/><circle cx="912" cy="519" r="0.8"/><circle cx="347" cy="319" r="1.3"/><circle cx="18" cy="586" r="0.8"/><circle cx="1004" cy="492" r="0.6"/><circle cx="138" cy="1238" r="0.6"/><circle cx="985" cy="1344" r="1.3"/><circle cx="505" cy="1187" r="0.6"/><circle cx="67" cy="976" r="1.3"/><circle cx="531" cy="177" r="1.0"/><circle cx="825" cy="149" r="0.6"/><circle cx="567" cy="1211" r="0.6"/><circle cx="247" cy="1679" r="1.0"/><circle cx="1066" cy="1225" r="1.0"/><circle cx="36" cy="1459" r="0.8"/><circle cx="98" cy="567" r="0.8"/><circle cx="126" cy="120" r="0.8"/><circle cx="246" cy="633" r="0.8"/><circle cx="936" cy="470" r="0.8"/><circle cx="851" cy="684" r="1.3"/><circle cx="1231" cy="1687" r="1.0"/><circle cx="1372" cy="194" r="0.8"/><circle cx="244" cy="100" r="1.0"/></g></svg>
+  <svg class="l2" viewBox="0 0 1400 1800" preserveAspectRatio="xMidYMin slice"><g fill="none" stroke="#4B6BFF" stroke-width=".8"><line x1="1095" y1="502" x2="671" y2="1145"/><line x1="671" y1="1145" x2="615" y2="1040"/><line x1="133" y1="1120" x2="490" y2="1567"/><line x1="1200" y1="1435" x2="974" y2="1198"/><line x1="974" y1="1198" x2="1113" y2="143"/><line x1="1113" y1="143" x2="307" y2="1441"/><line x1="272" y1="1672" x2="786" y2="1169"/><line x1="122" y1="123" x2="331" y2="873"/><line x1="331" y1="873" x2="519" y2="626"/><line x1="263" y1="845" x2="361" y2="1242"/><line x1="361" y1="1242" x2="773" y2="853"/><line x1="773" y1="853" x2="602" y2="956"/></g><g fill="#4B6BFF"><circle cx="159" cy="69" r="0.35"/><circle cx="295" cy="1709" r="0.65"/><circle cx="1095" cy="502" r="0.65"/><circle cx="671" cy="1145" r="0.35"/><circle cx="615" cy="1040" r="0.5"/><circle cx="666" cy="1590" r="0.65"/><circle cx="133" cy="1120" r="0.5"/><circle cx="490" cy="1567" r="0.35"/><circle cx="1175" cy="179" r="0.65"/><circle cx="106" cy="1504" r="0.5"/><circle cx="708" cy="1585" r="0.65"/><circle cx="1200" cy="1435" r="0.5"/><circle cx="974" cy="1198" r="0.35"/><circle cx="1113" cy="143" r="0.5"/><circle cx="307" cy="1441" r="0.35"/><circle cx="1272" cy="691" r="0.5"/><circle cx="566" cy="1018" r="0.5"/><circle cx="272" cy="1672" r="0.65"/><circle cx="786" cy="1169" r="0.5"/><circle cx="122" cy="123" r="0.5"/><circle cx="331" cy="873" r="0.65"/><circle cx="519" cy="626" r="0.35"/><circle cx="263" cy="845" r="0.35"/><circle cx="361" cy="1242" r="0.35"/><circle cx="773" cy="853" r="0.5"/><circle cx="602" cy="956" r="0.65"/></g></svg>
+</div>
+<header class="top" role="banner">
+  <div class="wrap top__row">
+    <a class="brand" href="/algoreach-site/" aria-label="AlgoReach home">
+      <svg class="brand__mark" viewBox="0 0 120 100" aria-hidden="true" focusable="false"><polygon points="12,22 56,12 56,88 12,78" fill="#E8E6E1" stroke="#1A1E26" stroke-width="6" stroke-linejoin="round"/><path d="M20 36 48 30M20 47 48 41M20 58 48 52M20 69 48 63" stroke="#9CA1A9" stroke-width="4.5" stroke-linecap="round"/><polygon points="56,12 110,24 110,78 56,88" fill="#1A1E26" stroke="#3A404B" stroke-width="3" stroke-linejoin="round"/><g stroke-width="4.5" stroke-linecap="round"><path stroke="#F2C3A3" d="M64 28 102 34"/><path stroke="#EAAA84" d="M64 38.5 102 44.5"/><path stroke="#E39A6F" d="M64 49 102 55"/><path stroke="#C77D52" d="M64 59.5 102 65.5"/><path stroke="#A9643C" d="M64 70 102 76"/></g></svg>
+      <span class="brand__name">AlgoReach</span>
+      <span class="brand__beta">beta</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" data-nav-toggle>
+      <span class="nav-toggle__bar" aria-hidden="true"></span><span class="nav-toggle__label">Menu</span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a href="/algoreach-site/platform/">Platform</a></li>
+        <li><a href="/algoreach-site/research/">Research</a></li>
+        <li><a href="/algoreach-site/portfolio-risk/">Portfolio &amp; Risk</a></li>
+        <li><a href="/algoreach-site/technology/">Technology</a></li>
+        <li><a href="/algoreach-site/institutions/">Institutions</a></li>
+        <li><a href="/algoreach-site/learn/">Learn</a></li>
+        <li><a href="/algoreach-site/record/">Record</a></li>
+        <li><a href="/algoreach-site/about/">About</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn btn--primary" href="/algoreach-site/beta/">Request access</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Data</p>
+      <h1 class="hero__h1">What is stored, since when, what is missing.</h1>
+      <p class="hero__lead">The terminal reads only what is stored. This page lists each series with its first and last date, the days it holds and the depth the data programme aims at, then the gaps and the work that closes each. It is counted from the engine&#39;s own atlas; no figure here is a forecast or a result.</p>
+      <p class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="/algoreach-site/record/">See the record</a>
+<a class="btn btn--ghost btn--lg" href="/algoreach-site/methods/">How a card is read</a>      </p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec sec--depth_overall" aria-labelledby="sec-1" id="s-how-deep-the-store-reaches">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-1" class="sec__h sec__h--big">How deep the store reaches</h2>
+<p class="sec__p">Two readings of the same atlas: the share of the envisioned span held across the rated series, and the same share with each per-name series scaled by how much of the cash universe it covers. The tick marks what the queued work reaches; the rest is bounded by what the sources publish.</p>    </div>
+    <div class="sec__body">
+<p class="note" data-testid="depth-off">The atlas could not be read for this page (no atlas written yet (python -m algoreach data atlas)); the figures appear once the engine has written one.</p>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--depth_table" aria-labelledby="sec-2" id="s-every-series-since-when">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-2" class="sec__h sec__h--big">Every series, since when</h2>
+<p class="sec__p">First and last date held, days with data, the depth aimed at and whether the series is complete to it.</p>    </div>
+    <div class="sec__body">
+<p class="note" data-testid="depth-table-off">No series to list yet.</p>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--depth_gaps" aria-labelledby="sec-3" id="s-what-still-closes-the-gaps">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-3" class="sec__h sec__h--big">What still closes the gaps</h2>
+<p class="sec__p">Each gap in points of the overall figure, with the work that closes it, as the atlas names it.</p>    </div>
+    <div class="sec__body">
+<p class="note" data-testid="depth-gaps-off">The gaps appear with the atlas.</p>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--whats_new" aria-labelledby="sec-4" id="s-what-changed-and-when">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-4" class="sec__h sec__h--big">What changed, and when</h2>
+<p class="sec__p">One line per data milestone, newest first, in plain words.</p>    </div>
+    <div class="sec__body">
+<ol class="whats-new-all" data-testid="whats-new-all"><li><time datetime="2026-11-28">2026-11-28</time> Each NIFTY 500 name carries a backtest of how earlier days&#39; recorded events lined up with its next move, shown with its uncertainty and labelled UNPROVEN.</li><li><time datetime="2026-11-28">2026-11-28</time> A lead-lag map relating every driver family to index and name moves one, five and twenty sessions later is computed on the stored history with false-discovery control; every cell is labelled UNPROVEN.</li><li><time datetime="2026-11-24">2026-11-24</time> Daily prices and index levels now reach December 2015 for the full cash universe; FRED macro series from 2000, EIA petroleum from 1982, exchange rates from 2000.</li><li><time datetime="2026-11-24">2026-11-24</time> Four families of relation cards (flows, derivatives, cross-market, ownership) are computed on the stored history and shown with their uncertainty, labelled UNPROVEN.</li><li><time datetime="2026-11-23">2026-11-23</time> Shanghai metals since 2003, GIFT NIFTY since 2022, US fails-to-deliver since 2009, India short volume since 2019, SLB since 2010 and market-wide position limits since 2020 are stored to their archive floors.</li><li><time datetime="2026-11-22">2026-11-22</time> The quarterly promoter and public holding of about 1,400 names is held back to December 2021, from the exchange&#39;s own filing list.</li><li><time datetime="2026-11-20">2026-11-20</time> The HBI panel (insider, institutional and crowd behaviour per name) is rebuilt nightly again after a stall found on the 24th was traced and fixed.</li></ol>      
+    </div>
+  </div>
+</section>
+
+  <section class="sec sec--side" aria-labelledby="sec-5" id="s-how-to-read-this-page">
+  <div class="sec__grid">
+    <div class="sec__side">
+      <h2 id="sec-5" class="sec__h">How to read this page</h2>
+    </div>
+    <div class="sec__body">
+<ul class="list"><li>A series is complete when it reaches the depth the programme aims at, which is the archive floor of its source where one exists.</li><li>Years held are counted from the first to the last stored date; a day without a row is not a day held.</li><li>Coverage is the share of the cash universe a per-name series holds; a series with one name counts as one name.</li><li>Nothing on this page is a signal, a hit rate or a probability; those stay inside the terminal next to their evidence.</li></ul>      
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap foot__grid">
+    <div class="foot__col foot__brand">
+      <p class="foot__name">AlgoReach</p>
+      <p class="foot__tag">Market intelligence for Indian equities, with the record kept in the open.</p>
+      <p class="foot__status"><span class="pill">Invite-only beta</span></p>
+<p class="foot__p">AlgoReach is a research engine for Indian and US listed equities, run by its founder from Mumbai. It reads public disclosures, news and market data, measures how the crowd behaves, and writes every conclusion to a ledger that is scored against what the market did next.</p><p class="foot__p">Questions, corrections and access requests go through the beta access form. There is no sales desk and no newsletter.</p>    </div>
+    <nav class="foot__col" aria-label="Site">
+      <p class="foot__h">Site</p>
+      <ul class="foot__links foot__links--plain"><li><a href="/algoreach-site/">Home</a></li><li><a href="/algoreach-site/platform/">Platform</a></li><li><a href="/algoreach-site/research/">Research</a></li><li><a href="/algoreach-site/portfolio-risk/">Portfolio &amp; Risk</a></li><li><a href="/algoreach-site/technology/">Technology</a></li><li><a href="/algoreach-site/institutions/">Institutions</a></li><li><a href="/algoreach-site/learn/">Learn</a></li><li><a href="/algoreach-site/record/">Record</a></li><li><a href="/algoreach-site/depth/" aria-current="page">Data</a></li><li><a href="/algoreach-site/methods/">Methods</a></li><li><a href="/algoreach-site/terminal/">Terminal</a></li><li><a href="/algoreach-site/about/">About</a></li><li><a href="/algoreach-site/beta/">Beta access</a></li>      </ul>
+    </nav>
+    <nav class="foot__col" aria-label="Legal">
+      <p class="foot__h">Legal</p>
+      <ul class="foot__links foot__links--plain">
+<li><a href="/algoreach-site/legal/privacy/">Privacy notice</a></li><li><a href="/algoreach-site/legal/terms/">Terms of use</a></li><li><a href="/algoreach-site/legal/risk/">Financial risk disclosure</a></li><li><a href="/algoreach-site/legal/data/">Data attribution and licensing</a></li>      </ul>
+    </nav>
+    <div class="foot__col foot__note">
+      <p class="foot__h">Risk disclosure</p>
+<p>AlgoReach provides research output: data, measurements, classifications and probabilities derived from public information. It is not investment advice, it is not tailored to your circumstances, and it does not place, route or recommend trades.</p><p>Investing in securities involves risk, including the loss of the capital invested. Probabilities on this site and in the terminal are estimates: a well-calibrated 70 percent call is still expected to be wrong about three times in ten. The record keeps every call, hits and misses alike, and the current record shows no proven edge.</p><p>Past measurements of the record do not indicate future results. Strategy and scenario figures are paper results under stated assumptions; they exclude slippage, market impact, fees and taxes unless a page says otherwise.</p>      <ul class="foot__facts"><li><b>Regulatory status.</b> no registration with any regulator is held or claimed; consult a registered professional before acting</li><li><b>Data.</b> shown under the terms of its owners, with source, time and licence on each item; not for redistribution</li><li><b>Your decisions.</b> remain yours; AlgoReach&#39;s output is one input among the ones you weigh</li></ul>
+      <p class="foot__more"><a href="/algoreach-site/legal/risk/">Read the full risk disclosure</a></p>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    <p>&copy; 2026 AlgoReach · Siddharth Singh · India</p>
+    <p>Research output, not investment advice. No trades are placed.</p>
+    <p class="foot__built">Page built 2026-11-28T11:36:59Z</p>
+  </div>
+</footer><script src="/algoreach-site/static/site.js" defer></script>
+<script src="/algoreach-site/static/ring.js" defer></script>
+</body>
+</html>
